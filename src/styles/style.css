@@ -1,3 +1,46 @@
+:root {
+  --clr-surface: #ffffff;
+  --clr-surface-high: #f6f7f9;
+  --clr-on-surface: #17181c;
+  --clr-primary: #3d50f5;
+  --clr-prio-normal: #d5d6db;
+  --clr-prio-medium: #f5bb3d;
+  --clr-prio-high: #f53d7d;
+}
+
 body {
-  background-color: yellow;
+  background-color: var(--clr-white);
+  height: 100vh;
+
+  font-family: sans-serif;
+  color: var(--clr-on-surface);
+
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  grid-template-rows: 1fr;
+}
+
+.sidebar {
+  background-color: var(--clr-surface-high);
+  padding: 24px;
+}
+
+.sidebar > nav {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 16px;
+}
+
+.account-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.add-task-btn {
+  margin-top: 16px;
+}
+
+.projects-label {
+  margin-top: 16px;
 }

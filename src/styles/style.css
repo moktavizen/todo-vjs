@@ -1,6 +1,7 @@
 :root {
   --clr-surface: #ffffff;
   --clr-surface-high: #f6f7f9;
+  --clr-surface-highest: #edeef3;
   --clr-on-surface: #17181c;
   --clr-primary: #3d50f5;
   --clr-prio-normal: #d5d6db;
@@ -22,31 +23,92 @@ body {
 
 .sidebar {
   background-color: var(--clr-surface-high);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
   padding: 24px;
 }
 
 .sidebar-nav {
   display: flex;
   flex-direction: column;
-  align-items: start;
-  gap: 16px;
+  gap: 1px;
 }
 
 .logo {
   font-size: 1.5rem;
   font-weight: 600;
+  color: var(--clr-primary);
 
   display: flex;
   align-items: center;
   gap: 8px;
+
+  padding: 8px;
 }
 
-.add-task-btn {
+.sidebar-nav > button {
+  text-align: start;
+}
+
+button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 8px;
+  border-radius: 8px;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: var(--clr-surface-highest);
+}
+
+.time-label {
+  padding: 8px;
   margin-top: 16px;
 }
 
-.projects-label {
+.projects-label-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 6px 8px;
   margin-top: 16px;
+}
+
+.add-project-btn {
+  background-color: var(--clr-primary);
+  color: var(--clr-surface);
+  font-size: 0.875rem;
+
+  border-radius: 8px;
+  padding: 4px 7px;
+}
+
+.add-project-btn:hover {
+  background-color: var(--clr-primary);
+  opacity: 0.7;
+}
+
+.data-selected {
+  background-color: var(--clr-surface-highest);
+}
+
+.github-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 8px;
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 .content-nav {
@@ -55,6 +117,21 @@ body {
 
   display: flex;
   justify-content: space-between;
+  align-items: center;
 
-  padding: 24px;
+  padding: 32px;
+}
+
+.add-task-btn {
+  background-color: var(--clr-primary);
+  color: var(--clr-surface);
+  font-size: 1rem;
+
+  border-radius: 8px;
+  padding: 6px 10px;
+}
+
+.add-task-btn:hover {
+  background-color: var(--clr-primary);
+  opacity: 0.7;
 }

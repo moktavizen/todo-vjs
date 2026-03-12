@@ -1,4 +1,9 @@
 import "./styles/reset.css";
 import "./styles/style.css";
 
-console.log("Hello World!");
+const addProjectDialog = document.querySelector("#add-project-dialog");
+const addProjectBtn = document.querySelector("#add-project-btn");
+
+addProjectBtn.addEventListener("click", () => {
+  addProjectDialog.showModal();
+});

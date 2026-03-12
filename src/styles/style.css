@@ -54,7 +54,7 @@ body {
 }
 
 button {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 8px;
 
@@ -79,6 +79,64 @@ button:hover {
 
   padding: 6px 8px;
   margin-top: 16px;
+}
+
+dialog {
+  width: 420px;
+
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  padding: 16px;
+  border-radius: 12px;
+}
+
+dialog h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+dialog form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+dialog label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+dialog input {
+  display: block;
+  padding: 6px 10px;
+  border: 1px solid var(--clr-prio-normal);
+  border-radius: 8px;
+  width: 100%;
+}
+
+.confirm-btn {
+  background-color: var(--clr-primary);
+  color: var(--clr-surface);
+  margin-right: 8px;
+}
+
+.confirm-btn:hover {
+  background-color: var(--clr-primary);
+  opacity: 0.7;
+}
+
+.cancel-btn {
+  background-color: var(--clr-prio-normal);
+}
+
+.cancel-btn:hover {
+  background-color: var(--clr-prio-normal);
+  opacity: 0.7;
 }
 
 .add-project-btn {

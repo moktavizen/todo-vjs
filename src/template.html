@@ -97,7 +97,22 @@
         </button>
         <div class="projects-label-wrapper">
           <div>Projects</div>
-          <button class="add-project-btn">Add Project</button>
+          <dialog id="add-project-dialog">
+            <h2>Add Project</h2>
+            <form id="add-project-form">
+              <div>
+                <label for="project-name-input">Name</label>
+                <input type="text" id="project-name-input" placeholder="Todo App" required />
+              </div>
+              <div>
+                <button class="confirm-btn" id="confirm-add-project-btn" type="submit" autofocus>
+                  Confirm
+                </button>
+                <button class="cancel-btn" formmethod="dialog" formnovalidate>Cancel</button>
+              </div>
+            </form>
+          </dialog>
+          <button id="add-project-btn" class="add-project-btn">Add Project</button>
         </div>
         <button>
           <svg

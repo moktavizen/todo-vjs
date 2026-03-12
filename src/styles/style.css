@@ -240,6 +240,18 @@ dialog select {
   border-left: 6px solid var(--clr-prio-high);
 }
 
+.edit-btn {
+  padding: 6px 10px;
+  background-color: var(--clr-prio-medium);
+  color: var(--clr-surface);
+  margin-right: 8px;
+}
+
+.edit-btn:hover {
+  background-color: var(--clr-prio-medium);
+  opacity: 0.7;
+}
+
 .todo-btn {
   padding: 0;
 }

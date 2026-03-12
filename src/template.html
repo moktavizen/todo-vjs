@@ -202,7 +202,52 @@
         <button id="add-task-btn" class="add-task-btn">Add Task</button>
       </nav>
       <div id="content">
-        <div class="todo-bar">
+        <dialog id="read-task-dialog">
+          <h2>Task Details</h2>
+          <form id="read-task-form">
+            <div>
+              <label for="task-title-input">Title</label>
+              <input
+                type="text"
+                id="task-title-input"
+                placeholder="Buy groceries"
+                required
+                value="Buy groceries"
+                disabled
+              />
+            </div>
+            <div>
+              <label for="task-description-input">Description</label>
+              <input
+                type="text"
+                id="task-description-input"
+                placeholder="Avocado, Guava, Potato"
+                required
+                value="Avocado, Guava, Potato"
+                disabled
+              />
+            </div>
+            <div class="date-priority-wrapper">
+              <div>
+                <label for="task-date-input">Due Date</label>
+                <input type="date" id="task-date-input" required value="2021-01-01" disabled />
+              </div>
+              <div>
+                <label for="task-priority-select">Priority</label>
+                <select name="taskPriority" id="task-priority-select" disabled>
+                  <option>Low</option>
+                  <option>Medium</option>
+                  <option>High</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <button class="edit-btn" id="edit-read-task-btn" type="submit" autofocus>Edit</button>
+              <button class="cancel-btn" formmethod="dialog" formnovalidate>Cancel</button>
+            </div>
+          </form>
+        </dialog>
+        <div id="todo-bar" class="todo-bar">
           <span class="due-date">16:00 PM</span><span>Lorem ipsum dolor si amet</span
           ><button class="todo-btn done">
             <svg

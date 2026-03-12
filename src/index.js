@@ -14,3 +14,10 @@ const addTaskBtn = document.querySelector("#add-task-btn");
 addTaskBtn.addEventListener("click", () => {
   addTaskDialog.showModal();
 });
+
+const readTaskDialog = document.querySelector("#read-task-dialog");
+const readTaskBtn = document.querySelector("#todo-bar");
+
+readTaskBtn.addEventListener("click", () => {
+  readTaskDialog.showModal();
+});

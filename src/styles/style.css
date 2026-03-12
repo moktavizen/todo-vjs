@@ -135,3 +135,49 @@ a:hover {
   background-color: var(--clr-primary);
   opacity: 0.7;
 }
+
+#content {
+  width: 80ch;
+  margin: auto;
+
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.todo-bar {
+  background-color: var(--clr-surface-high);
+
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  padding: 16px 20px;
+  border-left: 6px solid var(--clr-prio-normal);
+  border-radius: 8px;
+}
+
+.todo-bar:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.todo-btn {
+  padding: 0;
+}
+
+.todo-btn:hover {
+  background-color: initial;
+}
+
+.done {
+  margin-left: auto;
+}
+
+.done:hover {
+  color: var(--clr-primary);
+}
+
+.delete:hover {
+  color: var(--clr-prio-high);
+}

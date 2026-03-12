@@ -180,7 +180,7 @@
             <div class="date-priority-wrapper">
               <div>
                 <label for="task-date-input">Due Date</label>
-                <input type="date" id="task-date-input" required />
+                <input type="datetime-local" id="task-date-input" required />
               </div>
               <div>
                 <label for="task-priority-select">Priority</label>
@@ -230,7 +230,13 @@
             <div class="date-priority-wrapper">
               <div>
                 <label for="task-date-input">Due Date</label>
-                <input type="date" id="task-date-input" required value="2021-01-01" disabled />
+                <input
+                  type="datetime-local"
+                  id="task-date-input"
+                  required
+                  value="2021-01-01T16:00"
+                  disabled
+                />
               </div>
               <div>
                 <label for="task-priority-select">Priority</label>

@@ -23,6 +23,22 @@ function init() {
     ELS.addTodoForm.reset();
     ELS.addTodoDialog.close();
   });
+
+  ELS.content.addEventListener("click", (e) => {
+    if (e.target.tagName !== "BUTTON") return;
+
+    switch (e.target.classList[1]) {
+      case "expand":
+        console.log("expand");
+        break;
+      case "done":
+        console.log("done");
+        break;
+      case "delete":
+        console.log("delete");
+        break;
+    }
+  });
 }
 
 export { init };

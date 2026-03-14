@@ -227,11 +227,6 @@ dialog select {
   border-radius: 8px;
 }
 
-.todo-bar:hover {
-  cursor: pointer;
-  opacity: 0.7;
-}
-
 .data-priority-medium {
   border-left: 6px solid var(--clr-prio-medium);
 }
@@ -260,14 +255,23 @@ dialog select {
   background-color: initial;
 }
 
-.done {
+.expand {
   margin-left: auto;
+  padding: 2px;
+}
+
+.expand:hover {
+  color: var(--clr-primary);
 }
 
 .done:hover {
-  color: var(--clr-primary);
+  color: var(--clr-prio-medium);
 }
 
 .delete:hover {
   color: var(--clr-prio-high);
+}
+
+button svg {
+  pointer-events: none;
 }

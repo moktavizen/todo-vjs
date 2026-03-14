@@ -7,6 +7,7 @@ const ELS = {
   todoDescriptionInput: document.querySelector("#task-description-input"),
   todoDateInput: document.querySelector("#task-date-input"),
   todoPrioritySelect: document.querySelector("#task-priority-select"),
+  content: document.querySelector("#content"),
 };
 
 export { ELS };

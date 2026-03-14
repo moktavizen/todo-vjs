@@ -1,10 +1,12 @@
+import { format } from "date-fns";
+
 function todoBar({ title, dueDate, priority } = {}, todoListContainer) {
   const todoBarDiv = document.createElement("div");
 
   todoBarDiv.classList = "todo-bar";
   todoBarDiv.dataset.priority = priority.toLowerCase();
   todoBarDiv.innerHTML = `
-    <span class="due-date">${dueDate}</span><span>${title}</span
+    <span class="due-date">${format(dueDate, "dd/MM-kk:mm")}</span><span>${title}</span
     ><button class="todo-btn expand">
       <svg
         xmlns="http://www.w3.org/2000/svg"

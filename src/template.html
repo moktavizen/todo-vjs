@@ -201,59 +201,58 @@
         </dialog>
         <button id="add-task-btn" class="add-task-btn">Add Task</button>
       </nav>
-      <div id="content">
-        <dialog id="read-task-dialog">
-          <h2>Task Details</h2>
-          <form id="read-task-form">
+      <dialog id="read-task-dialog">
+        <h2>Task Details</h2>
+        <form id="read-task-form">
+          <div>
+            <label for="read-task-title">Title</label>
+            <input
+              type="text"
+              id="read-task-title"
+              placeholder="Buy groceries"
+              required
+              value="Buy groceries"
+              disabled
+            />
+          </div>
+          <div>
+            <label for="read-task-description">Description</label>
+            <input
+              type="text"
+              id="read-task-description"
+              placeholder="Avocado, Guava, Potato"
+              required
+              value="Avocado, Guava, Potato"
+              disabled
+            />
+          </div>
+          <div class="date-priority-wrapper">
             <div>
-              <label for="task-title-input">Title</label>
+              <label for="read-task-date">Due Date</label>
               <input
-                type="text"
-                id="task-title-input"
-                placeholder="Buy groceries"
+                type="datetime-local"
+                id="read-task-date"
                 required
-                value="Buy groceries"
+                value="2021-01-01T16:00"
                 disabled
               />
             </div>
             <div>
-              <label for="task-description-input">Description</label>
-              <input
-                type="text"
-                id="task-description-input"
-                placeholder="Avocado, Guava, Potato"
-                required
-                value="Avocado, Guava, Potato"
-                disabled
-              />
+              <label for="task-priority-select">Priority</label>
+              <select name="taskPriority" id="task-priority-select" disabled>
+                <option id="low-priority-option">Low</option>
+                <option id="medium-priority-option">Medium</option>
+                <option id="high-priority-option">High</option>
+              </select>
             </div>
-            <div class="date-priority-wrapper">
-              <div>
-                <label for="task-date-input">Due Date</label>
-                <input
-                  type="datetime-local"
-                  id="task-date-input"
-                  required
-                  value="2021-01-01T16:00"
-                  disabled
-                />
-              </div>
-              <div>
-                <label for="task-priority-select">Priority</label>
-                <select name="taskPriority" id="task-priority-select" disabled>
-                  <option>Low</option>
-                  <option>Medium</option>
-                  <option>High</option>
-                </select>
-              </div>
-            </div>
-            <div>
-              <button class="edit-btn" id="edit-read-task-btn" type="submit" autofocus>Edit</button>
-              <button class="cancel-btn" formmethod="dialog" formnovalidate>Cancel</button>
-            </div>
-          </form>
-        </dialog>
-      </div>
+          </div>
+          <div>
+            <button class="edit-btn" id="edit-read-task-btn" type="submit" autofocus>Edit</button>
+            <button class="cancel-btn" formmethod="dialog" formnovalidate>Cancel</button>
+          </div>
+        </form>
+      </dialog>
+      <div id="content"></div>
     </span>
   </body>
 </html>

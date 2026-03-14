@@ -1,13 +1,13 @@
 import { format } from "date-fns";
 
-function todoBar({ title, dueDate, priority } = {}, todoListContainer) {
+function todoBar({ id, title, dueDate, priority } = {}, todoListContainer) {
   const todoBarDiv = document.createElement("div");
 
   todoBarDiv.classList = "todo-bar";
   todoBarDiv.dataset.priority = priority.toLowerCase();
   todoBarDiv.innerHTML = `
     <span class="due-date">${format(dueDate, "dd/MM-kk:mm")}</span><span>${title}</span
-    ><button class="todo-btn expand">
+    ><button class="todo-btn expand" data-todo-id="${id}">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="20"
@@ -26,7 +26,7 @@ function todoBar({ title, dueDate, priority } = {}, todoListContainer) {
         <path d="M9 21H3v-6" />
       </svg>
     </button>
-    <button class="todo-btn done">
+    <button class="todo-btn done" data-todo-id="${id}">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"
@@ -42,7 +42,7 @@ function todoBar({ title, dueDate, priority } = {}, todoListContainer) {
         <path d="M20 6 9 17l-5-5" />
       </svg>
     </button>
-    <button class="todo-btn delete">
+    <button class="todo-btn delete" data-todo-id="${id}">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"

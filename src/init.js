@@ -2,12 +2,13 @@ import { renderAll } from "./dom/all.js";
 import { ELS } from "./globals.js";
 import { updateTodoList } from "./dom/todoList.js";
 import { addTodo, todoList } from "./logic/todo.js";
+import { updateReadTodoModal } from "./dom/readTodoModal.js";
 
 function init() {
   renderAll();
 
   ELS.addTodoBtn.addEventListener("click", () => {
-    ELS.addTodoDialog.showModal();
+    ELS.addTodoModal.showModal();
   });
 
   ELS.confirmAddTodoBtn.addEventListener("click", (e) => {
@@ -26,7 +27,7 @@ function init() {
     ELS.content.dispatchEvent(todoListChangeEvent);
 
     ELS.addTodoForm.reset();
-    ELS.addTodoDialog.close();
+    ELS.addTodoModal.close();
   });
 
   ELS.content.addEventListener("todo-list-change", () => {
@@ -36,9 +37,12 @@ function init() {
   ELS.content.addEventListener("click", (e) => {
     if (e.target.tagName !== "BUTTON") return;
 
+    const targetIndex = todoList.findIndex((todo) => todo.id === e.target.dataset.todoId);
+
     switch (e.target.classList[1]) {
       case "expand":
-        console.log("expand");
+        updateReadTodoModal(todoList[targetIndex]);
+        ELS.readTodoModal.showModal();
         break;
       case "done":
         console.log("done");

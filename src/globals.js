@@ -1,6 +1,6 @@
 const ELS = {
   addTodoBtn: document.querySelector("#add-task-btn"),
-  addTodoDialog: document.querySelector("#add-task-dialog"),
+  addTodoModal: document.querySelector("#add-task-dialog"),
   confirmAddTodoBtn: document.querySelector("#confirm-add-task-btn"),
   addTodoForm: document.querySelector("#add-task-form"),
   todoTitleInput: document.querySelector("#task-title-input"),
@@ -10,6 +10,13 @@ const ELS = {
   content: document.querySelector("#content"),
   pageHeading: document.querySelector("#page-heading"),
   addTaskFormHeading: document.querySelector("#add-task-form-heading"),
+  readTodoTitle: document.querySelector("#read-task-title"),
+  readTodoDescription: document.querySelector("#read-task-description"),
+  readTodoDate: document.querySelector("#read-task-date"),
+  lowPriorityOption: document.querySelector("#low-priority-option"),
+  mediumPriorityOption: document.querySelector("#medium-priority-option"),
+  highPriorityOption: document.querySelector("#high-priority-option"),
+  readTodoModal: document.querySelector("#read-task-dialog"),
 };
 
 export { ELS };

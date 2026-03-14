@@ -1,6 +1,7 @@
 const todoList = [];
 
 class Todo {
+  #id = crypto.randomUUID();
   #title;
   #description;
   #dueDate;
@@ -13,6 +14,9 @@ class Todo {
     this.#priority = priority;
   }
 
+  get id() {
+    return this.#id;
+  }
   get title() {
     return this.#title;
   }

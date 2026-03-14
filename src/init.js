@@ -1,8 +1,11 @@
+import { renderAll } from "./dom/all.js";
 import { ELS } from "./globals.js";
-import { addTodoToList } from "./logic/addTodo.js";
-import { todoList } from "./logic/todo.js";
+import { updateTodoList } from "./dom/todoList.js";
+import { addTodo, todoList } from "./logic/todo.js";
 
 function init() {
+  renderAll();
+
   ELS.addTodoBtn.addEventListener("click", () => {
     ELS.addTodoDialog.showModal();
   });
@@ -11,17 +14,23 @@ function init() {
     if (!ELS.addTodoForm.checkValidity()) return;
     e.preventDefault();
 
-    addTodoToList(
+    addTodo(
       ELS.todoTitleInput.value,
       ELS.todoDescriptionInput.value,
       ELS.todoDateInput.value,
       ELS.todoPrioritySelect.value,
+      todoList,
     );
 
-    console.log(todoList);
+    const todoListChangeEvent = new CustomEvent("todo-list-change");
+    ELS.content.dispatchEvent(todoListChangeEvent);
 
     ELS.addTodoForm.reset();
     ELS.addTodoDialog.close();
+  });
+
+  ELS.content.addEventListener("todo-list-change", () => {
+    updateTodoList(todoList, ELS.content);
   });
 
   ELS.content.addEventListener("click", (e) => {

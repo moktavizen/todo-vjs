@@ -227,11 +227,11 @@ dialog select {
   border-radius: 8px;
 }
 
-.data-priority-medium {
+[data-priority="medium"] {
   border-left: 6px solid var(--clr-prio-medium);
 }
 
-.data-priority-high {
+[data-priority="high"] {
   border-left: 6px solid var(--clr-prio-high);
 }
 

@@ -27,4 +27,9 @@ class Todo {
   }
 }
 
-export { todoList, Todo };
+function addTodo(title, description, dueDate, priority, arr) {
+  const newTodo = new Todo(title, description, dueDate, priority);
+  arr.push(newTodo);
+}
+
+export { todoList, Todo, addTodo };

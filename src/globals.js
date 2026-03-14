@@ -8,6 +8,8 @@ const ELS = {
   todoDateInput: document.querySelector("#task-date-input"),
   todoPrioritySelect: document.querySelector("#task-priority-select"),
   content: document.querySelector("#content"),
+  pageHeading: document.querySelector("#page-heading"),
+  addTaskFormHeading: document.querySelector("#add-task-form-heading"),
 };
 
 export { ELS };

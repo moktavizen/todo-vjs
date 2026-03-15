@@ -1,5 +1,5 @@
-import { ELS } from "../globals.js";
-import { findTargetTodoIndex, todoList } from "../logic/todo.js";
+import { CE, ELS } from "../globals.js";
+import { deleteTodo, findTargetTodoIndex, todoList } from "../logic/todo.js";
 import { updateReadTodoModal } from "./readTodoModal.js";
 import { todoBar } from "./todoBar.js";
 
@@ -37,7 +37,8 @@ function addTodoListListeners() {
         console.log("done");
         break;
       case "delete":
-        console.log("delete");
+        deleteTodo(todoList, targetIndex);
+        ELS.content.dispatchEvent(CE.todoListChange);
         break;
     }
   });

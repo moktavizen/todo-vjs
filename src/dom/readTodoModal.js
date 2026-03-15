@@ -1,5 +1,5 @@
-import { ELS } from "../globals.js";
-import { editTodo } from "../logic/todo.js";
+import { CE, ELS } from "../globals.js";
+import { editTodo, todoList } from "../logic/todo.js";
 
 function updateReadTodoModal(targetIndex, { title, description, dueDate, priority } = {}) {
   ELS.readTodoForm.dataset.targetTodoIndex = targetIndex;
@@ -80,8 +80,7 @@ function addReadTodoModalListeners() {
           ELS.readTodoPriority.value,
         );
 
-        const todoListChangeEvent = new CustomEvent("todo-list-change");
-        ELS.content.dispatchEvent(todoListChangeEvent);
+        ELS.content.dispatchEvent(CE.todoListChange);
 
         ELS.readTodoModal.close();
 

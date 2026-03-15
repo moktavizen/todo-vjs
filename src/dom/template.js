@@ -1,4 +1,4 @@
-import { ELS } from "../globals.js";
+import { CE, ELS } from "../globals.js";
 import { addTodo, todoList } from "../logic/todo.js";
 
 function addTemplateListeners() {
@@ -18,8 +18,7 @@ function addTemplateListeners() {
       todoList,
     );
 
-    const todoListChangeEvent = new CustomEvent("todo-list-change");
-    ELS.content.dispatchEvent(todoListChangeEvent);
+    ELS.content.dispatchEvent(CE.todoListChange);
 
     ELS.addTodoModal.close();
     ELS.addTodoForm.reset();

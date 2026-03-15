@@ -25,4 +25,8 @@ const ELS = {
   cancelEditTaskBtn: null,
 };
 
-export { ELS };
+const CE = {
+  todoListChange: new CustomEvent("todo-list-change"),
+};
+
+export { ELS, CE };

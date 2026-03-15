@@ -43,9 +43,9 @@ class Todo {
   }
 }
 
-function addTodo(title, description, dueDate, priority, arr) {
+function addTodo(title, description, dueDate, priority, todoList) {
   const newTodo = new Todo(title, description, dueDate, priority);
-  arr.push(newTodo);
+  todoList.push(newTodo);
 }
 
 function editTodo(todo, newTitle, newDescription, newDueDate, newPriority) {
@@ -55,8 +55,12 @@ function editTodo(todo, newTitle, newDescription, newDueDate, newPriority) {
   todo.priority = newPriority;
 }
 
+function deleteTodo(todoList, todoIndex) {
+  todoList.splice(todoIndex, 1);
+}
+
 function findTargetTodoIndex(todoList, targetId) {
   return todoList.findIndex((todo) => todo.id === targetId);
 }
 
-export { todoList, Todo, addTodo, editTodo, findTargetTodoIndex };
+export { todoList, Todo, addTodo, editTodo, deleteTodo, findTargetTodoIndex };

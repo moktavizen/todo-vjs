@@ -2,6 +2,12 @@ import { CE, ELS } from "../globals.js";
 import { addTodo, todoList } from "../logic/todo.js";
 
 function addTemplateListeners() {
+  // TODO: Add switch page logic
+
+  ELS.addProjectBtn.addEventListener("click", () => {
+    ELS.addProjectDialog.showModal();
+  });
+
   ELS.addTodoBtn.addEventListener("click", () => {
     ELS.addTodoModal.showModal();
   });

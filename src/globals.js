@@ -1,4 +1,6 @@
 const ELS = {
+  addProjectDialog: document.querySelector("#add-project-dialog"),
+  addProjectBtn: document.querySelector("#add-project-btn"),
   addTodoBtn: document.querySelector("#add-task-btn"),
   addTodoModal: document.querySelector("#add-task-dialog"),
   confirmAddTodoBtn: document.querySelector("#confirm-add-task-btn"),

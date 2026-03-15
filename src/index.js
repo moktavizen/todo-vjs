@@ -1,14 +1,19 @@
 import "./styles/reset.css";
 import "./styles/style.css";
-import { init } from "./init.js";
+import { renderAll } from "./dom/all.js";
+import { addReadTodoModalListeners } from "./dom/readTodoModal.js";
+import { addTemplateListeners } from "./dom/template.js";
+import { addTodoListListeners } from "./dom/todoList.js";
+import { Todo, todoList } from "./logic/todo.js";
 
-init();
+todoList.push(
+  new Todo("John", "Doe", "2026-03-15T13:37", "Low"),
+  new Todo("Jane", "Doe", "2026-03-16T13:37", "Medium"),
+  new Todo("Joni", "Doe", "2026-03-17T13:37", "High"),
+);
 
-// TODO: Add switch page logic
+renderAll();
 
-const addProjectDialog = document.querySelector("#add-project-dialog");
-const addProjectBtn = document.querySelector("#add-project-btn");
-
-addProjectBtn.addEventListener("click", () => {
-  addProjectDialog.showModal();
-});
+addTemplateListeners();
+addTodoListListeners();
+addReadTodoModalListeners();

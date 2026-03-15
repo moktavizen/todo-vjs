@@ -253,6 +253,7 @@ dialog select {
 
 .due-date {
   font-family: monospace;
+  line-height: normal;
 }
 
 .todo-btn {

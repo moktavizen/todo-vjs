@@ -6,7 +6,7 @@ function todoBar({ id, title, dueDate, priority } = {}, todoListContainer) {
   todoBarDiv.classList = "todo-bar";
   todoBarDiv.dataset.priority = priority.toLowerCase();
   todoBarDiv.innerHTML = `
-    <span class="due-date">${format(dueDate, "dd/MM-kk:mm")}</span><span>${title}</span
+    <span class="due-date">${format(dueDate, "dd/MM-kk:mm")}</span><span class="title">${title}</span
     ><button class="todo-btn expand" data-todo-id="${id}">
       <svg
         xmlns="http://www.w3.org/2000/svg"

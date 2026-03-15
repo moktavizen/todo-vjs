@@ -256,6 +256,11 @@ dialog select {
   line-height: normal;
 }
 
+.marked > .due-date,
+.marked > .title {
+  text-decoration: solid line-through 2px;
+}
+
 .todo-btn {
   padding: 0;
 }

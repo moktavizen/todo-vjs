@@ -34,7 +34,7 @@ function addTodoListListeners() {
         ELS.readTodoModal.showModal();
         break;
       case "done":
-        console.log("done");
+        e.target.parentElement.classList.toggle("marked");
         break;
       case "delete":
         deleteTodo(todoList, targetIndex);

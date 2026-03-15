@@ -1,5 +1,5 @@
 import { ELS } from "../globals.js";
-import { todoList } from "../logic/todo.js";
+import { findTargetTodoIndex, todoList } from "../logic/todo.js";
 import { updateReadTodoModal } from "./readTodoModal.js";
 import { todoBar } from "./todoBar.js";
 
@@ -26,11 +26,11 @@ function addTodoListListeners() {
   ELS.content.addEventListener("click", (e) => {
     if (e.target.tagName !== "BUTTON") return;
 
-    const targetIndex = todoList.findIndex((todo) => todo.id === e.target.dataset.todoId);
+    const targetIndex = findTargetTodoIndex(todoList, e.target.dataset.todoId);
 
     switch (e.target.classList[1]) {
       case "expand":
-        updateReadTodoModal(todoList[targetIndex], targetIndex);
+        updateReadTodoModal(targetIndex, todoList[targetIndex]);
         ELS.readTodoModal.showModal();
         break;
       case "done":

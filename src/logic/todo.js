@@ -55,4 +55,8 @@ function editTodo(todo, newTitle, newDescription, newDueDate, newPriority) {
   todo.priority = newPriority;
 }
 
-export { todoList, Todo, addTodo, editTodo };
+function findTargetTodoIndex(todoList, targetId) {
+  return todoList.findIndex((todo) => todo.id === targetId);
+}
+
+export { todoList, Todo, addTodo, editTodo, findTargetTodoIndex };

@@ -1,7 +1,9 @@
 import { ELS } from "../globals.js";
 import { editTodo } from "../logic/todo.js";
 
-function updateReadTodoModal({ title, description, dueDate, priority } = {}, targetIndex) {
+function updateReadTodoModal(targetIndex, { title, description, dueDate, priority } = {}) {
+  ELS.readTodoForm.dataset.targetTodoIndex = targetIndex;
+
   ELS.readTodoTitle.setAttribute("value", title);
   ELS.readTodoDescription.setAttribute("value", description);
   ELS.readTodoDate.setAttribute("value", dueDate);
@@ -23,8 +25,6 @@ function updateReadTodoModal({ title, description, dueDate, priority } = {}, tar
       ELS.highPriorityOption.setAttribute("selected", "");
       break;
   }
-
-  ELS.readTodoForm.dataset.todoTargetIndex = targetIndex;
 }
 
 function resetReadTodoForm() {
@@ -46,7 +46,7 @@ function addReadTodoModalListeners() {
   ELS.readTodoForm.addEventListener("click", (e) => {
     if (e.target.tagName !== "BUTTON") return;
 
-    const targetIndex = e.currentTarget.dataset.todoTargetIndex;
+    const targetIndex = e.currentTarget.dataset.targetTodoIndex;
 
     switch (e.target.id) {
       case "edit-read-task-btn":

@@ -17,6 +17,12 @@ const ELS = {
   mediumPriorityOption: document.querySelector("#medium-priority-option"),
   highPriorityOption: document.querySelector("#high-priority-option"),
   readTodoModal: document.querySelector("#read-task-dialog"),
+  editReadTaskBtn: document.querySelector("#edit-read-task-btn"),
+  readTodoForm: document.querySelector("#read-task-form"),
+  readTodoPriority: document.querySelector("#read-task-priority"),
+  confirmEditTodoBtn: null,
+  cancelReadTaskBtn: document.querySelector("#cancel-read-task-btn"),
+  cancelEditTaskBtn: null,
 };
 
 export { ELS };

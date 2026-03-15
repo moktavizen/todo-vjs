@@ -20,14 +20,26 @@ class Todo {
   get title() {
     return this.#title;
   }
+  set title(newTitle) {
+    this.#title = newTitle;
+  }
   get description() {
     return this.#description;
+  }
+  set description(newDescription) {
+    this.#description = newDescription;
   }
   get dueDate() {
     return this.#dueDate;
   }
+  set dueDate(newDueDate) {
+    this.#dueDate = newDueDate;
+  }
   get priority() {
     return this.#priority;
+  }
+  set priority(newPriority) {
+    this.#priority = newPriority;
   }
 }
 
@@ -36,4 +48,11 @@ function addTodo(title, description, dueDate, priority, arr) {
   arr.push(newTodo);
 }
 
-export { todoList, Todo, addTodo };
+function editTodo(todo, newTitle, newDescription, newDueDate, newPriority) {
+  todo.title = newTitle;
+  todo.description = newDescription;
+  todo.dueDate = newDueDate;
+  todo.priority = newPriority;
+}
+
+export { todoList, Todo, addTodo, editTodo };

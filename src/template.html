@@ -239,7 +239,7 @@
             </div>
             <div>
               <label for="task-priority-select">Priority</label>
-              <select name="taskPriority" id="task-priority-select" disabled>
+              <select name="taskPriority" id="read-task-priority" disabled>
                 <option id="low-priority-option">Low</option>
                 <option id="medium-priority-option">Medium</option>
                 <option id="high-priority-option">High</option>
@@ -248,7 +248,9 @@
           </div>
           <div>
             <button class="edit-btn" id="edit-read-task-btn" type="submit" autofocus>Edit</button>
-            <button class="cancel-btn" formmethod="dialog" formnovalidate>Cancel</button>
+            <button class="cancel-btn" id="cancel-read-task-btn" formmethod="dialog" formnovalidate>
+              Cancel
+            </button>
           </div>
         </form>
       </dialog>

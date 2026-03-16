@@ -31,6 +31,8 @@ function updateReadTodoModal(targetIndex, { title, description, dueDate, priorit
 function resetReadTodoForm() {
   ELS.readTodoForm.reset();
 
+  STATE.isEditModalOpen = false;
+
   ELS.readTodoFormHeading.textContent = "Task Details";
 
   ELS.readTodoTitle.setAttribute("disabled", "");
@@ -54,6 +56,8 @@ function addReadTodoModalListeners() {
     switch (e.target.id) {
       case "edit-read-task-btn":
         e.preventDefault();
+
+        STATE.isEditModalOpen = true;
 
         ELS.readTodoFormHeading.textContent = "Edit Task";
 
@@ -99,8 +103,10 @@ function addReadTodoModalListeners() {
     }
   });
 
+  // Must be attached to `document`, if attahed to readTodoModal the first esc
+  // does not work.
   document.addEventListener("keydown", (e) => {
-    if (!ELS.confirmEditTodoBtn || e.key !== "Escape") return;
+    if (!STATE.isEditModalOpen || !ELS.confirmEditTodoBtn || e.key !== "Escape") return;
     e.preventDefault();
 
     ELS.readTodoModal.close();

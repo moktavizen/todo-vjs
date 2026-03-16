@@ -35,6 +35,7 @@ const STATE = {
   page: "All",
   startDate: null,
   endDate: null,
+  isEditModalOpen: false,
 };
 
 export { ELS, STATE };

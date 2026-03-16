@@ -33,7 +33,7 @@ function resetReadTodoForm() {
 
   STATE.isEditModalOpen = false;
 
-  ELS.readTodoFormHeading.textContent = "Task Details";
+  ELS.readTodoFormHeading.textContent = "View Task";
 
   ELS.readTodoTitle.setAttribute("disabled", "");
   ELS.readTodoDescription.setAttribute("disabled", "");

@@ -6,6 +6,9 @@ function renderAll() {
   ELS.pageHeading.textContent = STATE.page;
   ELS.addTaskFormHeading.textContent = `Add Task: ${STATE.page}`;
 
+  ELS.todoDateInput.removeAttribute("min");
+  ELS.todoDateInput.removeAttribute("max");
+
   updateTodoList(todoList);
 }
 

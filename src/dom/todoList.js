@@ -42,4 +42,4 @@ function addTodoListListeners() {
   });
 }
 
-export { clearTodoList, renderTodoList, updateTodoList, addTodoListListeners };
+export { updateTodoList, addTodoListListeners };

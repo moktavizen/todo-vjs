@@ -6,7 +6,7 @@ function renderToday() {
   ELS.pageHeading.textContent = STATE.page;
   ELS.addTaskFormHeading.textContent = `Add Task: ${STATE.page}`;
 
-  updateTodoList(todoList, ELS.content, STATE.startDate, STATE.endDate);
+  updateTodoList(todoList, STATE.startDate, STATE.endDate);
 }
 
 export { renderToday };

@@ -6,7 +6,7 @@ function renderAll() {
   ELS.pageHeading.textContent = STATE.page;
   ELS.addTaskFormHeading.textContent = `Add Task: ${STATE.page}`;
 
-  updateTodoList(todoList, ELS.content);
+  updateTodoList(todoList);
 }
 
 export { renderAll };

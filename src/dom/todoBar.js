@@ -1,6 +1,7 @@
 import { format } from "date-fns";
+import { ELS } from "../globals.js";
 
-function todoBar({ id, title, dueDate, priority } = {}, todoListContainer) {
+function todoBar({ id, title, dueDate, priority } = {}) {
   const todoBarDiv = document.createElement("div");
 
   todoBarDiv.classList = "todo-bar";
@@ -61,7 +62,7 @@ function todoBar({ id, title, dueDate, priority } = {}, todoListContainer) {
     </button>
   `;
 
-  todoListContainer.appendChild(todoBarDiv);
+  ELS.content.appendChild(todoBarDiv);
 }
 
 export { todoBar };

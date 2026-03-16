@@ -63,7 +63,7 @@ function addTemplateListeners() {
       todoList,
     );
 
-    updateTodoList(todoList, ELS.content, STATE.startDate, STATE.endDate);
+    updateTodoList(todoList, STATE.startDate, STATE.endDate);
 
     ELS.addTodoModal.close();
     ELS.addTodoForm.reset();

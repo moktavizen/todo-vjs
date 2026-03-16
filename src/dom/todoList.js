@@ -3,21 +3,21 @@ import { deleteTodo, filterTodoList, findTargetTodoIndex, todoList } from "../lo
 import { updateReadTodoModal } from "./readTodoModal.js";
 import { todoBar } from "./todoBar.js";
 
-function clearTodoList(todoListContainer) {
-  todoListContainer.replaceChildren();
+function clearTodoList() {
+  ELS.content.replaceChildren();
 }
 
-function renderTodoList(todoList, todoListContainer) {
+function renderTodoList(todoList) {
   for (const todo of todoList) {
-    todoBar(todo, todoListContainer);
+    todoBar(todo);
   }
 }
 
-function updateTodoList(todoList, todoListContainer, startDate = "", endDate = "") {
+function updateTodoList(todoList, startDate = "", endDate = "") {
   const filteredTodoList = filterTodoList(todoList, startDate, endDate);
 
-  clearTodoList(todoListContainer);
-  renderTodoList(filteredTodoList, todoListContainer);
+  clearTodoList();
+  renderTodoList(filteredTodoList);
 }
 
 function addTodoListListeners() {
@@ -36,7 +36,7 @@ function addTodoListListeners() {
         break;
       case "delete":
         deleteTodo(todoList, targetIndex);
-        updateTodoList(todoList, ELS.content, STATE.startDate, STATE.endDate);
+        updateTodoList(todoList, STATE.startDate, STATE.endDate);
         break;
     }
   });

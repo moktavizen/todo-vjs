@@ -31,6 +31,8 @@ function updateReadTodoModal(targetIndex, { title, description, dueDate, priorit
 function resetReadTodoForm() {
   ELS.readTodoForm.reset();
 
+  ELS.readTodoFormHeading.textContent = "Task Details";
+
   ELS.readTodoTitle.setAttribute("disabled", "");
   ELS.readTodoDescription.setAttribute("disabled", "");
   ELS.readTodoDate.setAttribute("disabled", "");
@@ -52,6 +54,8 @@ function addReadTodoModalListeners() {
     switch (e.target.id) {
       case "edit-read-task-btn":
         e.preventDefault();
+
+        ELS.readTodoFormHeading.textContent = `Edit Task: ${STATE.page}`;
 
         ELS.readTodoTitle.removeAttribute("disabled");
         ELS.readTodoDescription.removeAttribute("disabled");

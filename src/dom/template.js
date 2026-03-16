@@ -8,6 +8,8 @@ import { updateTodoList } from "./todoList.js";
 
 function addTemplateListeners() {
   ELS.allPageBtn.addEventListener("click", () => {
+    if (STATE.page === "All") return;
+
     STATE.page = "All";
     STATE.startDate = null;
     STATE.endDate = null;
@@ -20,6 +22,8 @@ function addTemplateListeners() {
   });
 
   ELS.todayPageBtn.addEventListener("click", () => {
+    if (STATE.page === "Today") return;
+
     STATE.page = "Today";
     STATE.startDate = startOfToday();
     STATE.endDate = endOfToday();
@@ -32,6 +36,8 @@ function addTemplateListeners() {
   });
 
   ELS.upcomingPageBtn.addEventListener("click", () => {
+    if (STATE.page === "Upcoming") return;
+
     STATE.page = "Upcoming";
     STATE.startDate = startOfTomorrow();
     STATE.endDate = null;

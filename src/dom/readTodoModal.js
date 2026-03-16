@@ -40,6 +40,8 @@ function resetReadTodoForm() {
   ELS.readTodoDate.setAttribute("disabled", "");
   ELS.readTodoPriority.setAttribute("disabled", "");
 
+  ELS.readTodoDescription.removeAttribute("placeholder");
+
   ELS.confirmEditTodoBtn.setAttribute("id", "edit-read-task-btn");
   ELS.editReadTaskBtn.classList = "edit-btn";
   ELS.editReadTaskBtn.textContent = "Edit";
@@ -65,6 +67,8 @@ function addReadTodoModalListeners() {
         ELS.readTodoDescription.removeAttribute("disabled");
         ELS.readTodoDate.removeAttribute("disabled");
         ELS.readTodoPriority.removeAttribute("disabled");
+
+        ELS.readTodoDescription.setAttribute("placeholder", "Avocado, Guava, Potato");
 
         ELS.readTodoTitle.focus();
         ELS.readTodoTitle.setSelectionRange(0, -1);

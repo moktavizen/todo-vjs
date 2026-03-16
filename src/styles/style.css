@@ -285,3 +285,9 @@ dialog select {
 .delete:hover {
   color: var(--clr-prio-high);
 }
+
+.empty-todo-list {
+  display: grid;
+  place-items: center;
+  text-align: center;
+}

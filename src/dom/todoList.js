@@ -7,7 +7,24 @@ function clearTodoList() {
   ELS.content.replaceChildren();
 }
 
+function renderEmptyTodoList() {
+  const emptyTodoListDiv = document.createElement("div");
+  emptyTodoListDiv.classList = "empty-todo-list";
+  emptyTodoListDiv.innerHTML =
+    "There are no tasks in this category ☹️<br />Add new task using button at the top right corner!";
+
+  const contentNavHeight = ELS.contentNav.offsetHeight;
+  const bottomPadding = 32;
+  emptyTodoListDiv.style.height = `${window.innerHeight - contentNavHeight - bottomPadding}px`;
+
+  ELS.content.appendChild(emptyTodoListDiv);
+}
+
 function renderTodoList(todoList) {
+  if (!todoList.length) {
+    renderEmptyTodoList();
+  }
+
   for (const todo of todoList) {
     todoBar(todo);
   }

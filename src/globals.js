@@ -1,4 +1,7 @@
 const ELS = {
+  allPageBtn: document.querySelector("#all-page-btn"),
+  todayPageBtn: document.querySelector("#today-page-btn"),
+  upcomingPageBtn: document.querySelector("#upcoming-page-btn"),
   addProjectDialog: document.querySelector("#add-project-dialog"),
   addProjectBtn: document.querySelector("#add-project-btn"),
   addTodoBtn: document.querySelector("#add-task-btn"),
@@ -27,8 +30,10 @@ const ELS = {
   cancelEditTaskBtn: null,
 };
 
-const CE = {
-  todoListChange: new CustomEvent("todo-list-change"),
+const STATE = {
+  page: "All",
+  startDate: null,
+  endDate: null,
 };
 
-export { ELS, CE };
+export { ELS, STATE };

@@ -1,5 +1,5 @@
-import { CE, ELS } from "../globals.js";
-import { deleteTodo, findTargetTodoIndex, todoList } from "../logic/todo.js";
+import { ELS, STATE } from "../globals.js";
+import { deleteTodo, filterTodoList, findTargetTodoIndex, todoList } from "../logic/todo.js";
 import { updateReadTodoModal } from "./readTodoModal.js";
 import { todoBar } from "./todoBar.js";
 
@@ -13,16 +13,14 @@ function renderTodoList(todoList, todoListContainer) {
   }
 }
 
-function updateTodoList(todoList, todoListContainer) {
+function updateTodoList(todoList, todoListContainer, startDate = "", endDate = "") {
+  const filteredTodoList = filterTodoList(todoList, startDate, endDate);
+
   clearTodoList(todoListContainer);
-  renderTodoList(todoList, todoListContainer);
+  renderTodoList(filteredTodoList, todoListContainer);
 }
 
 function addTodoListListeners() {
-  ELS.content.addEventListener("todo-list-change", () => {
-    updateTodoList(todoList, ELS.content);
-  });
-
   ELS.content.addEventListener("click", (e) => {
     if (e.target.tagName !== "BUTTON") return;
 
@@ -38,7 +36,7 @@ function addTodoListListeners() {
         break;
       case "delete":
         deleteTodo(todoList, targetIndex);
-        ELS.content.dispatchEvent(CE.todoListChange);
+        updateTodoList(todoList, ELS.content, STATE.startDate, STATE.endDate);
         break;
     }
   });

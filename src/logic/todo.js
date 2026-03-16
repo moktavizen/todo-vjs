@@ -1,3 +1,5 @@
+import { isAfter, isWithinInterval } from "date-fns";
+
 const todoList = [];
 
 class Todo {
@@ -63,4 +65,17 @@ function findTargetTodoIndex(todoList, targetId) {
   return todoList.findIndex((todo) => todo.id === targetId);
 }
 
-export { todoList, Todo, addTodo, editTodo, deleteTodo, findTargetTodoIndex };
+function filterTodoList(todoList, startDate = "", endDate = "") {
+  if (!startDate && !endDate) return todoList;
+
+  if (!endDate) return todoList.filter((todo) => isAfter(todo.dueDate, startDate));
+
+  return todoList.filter((todo) =>
+    isWithinInterval(todo.dueDate, {
+      start: startDate,
+      end: endDate,
+    }),
+  );
+}
+
+export { todoList, Todo, addTodo, editTodo, deleteTodo, findTargetTodoIndex, filterTodoList };

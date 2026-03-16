@@ -55,7 +55,7 @@ function addReadTodoModalListeners() {
       case "edit-read-task-btn":
         e.preventDefault();
 
-        ELS.readTodoFormHeading.textContent = `Edit Task: ${STATE.page}`;
+        ELS.readTodoFormHeading.textContent = "Edit Task";
 
         ELS.readTodoTitle.removeAttribute("disabled");
         ELS.readTodoDescription.removeAttribute("disabled");

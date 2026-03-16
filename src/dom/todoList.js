@@ -1,5 +1,5 @@
 import { ELS, STATE } from "../globals.js";
-import { deleteTodo, filterTodoList, findTargetTodoIndex, todoList } from "../logic/todo.js";
+import { deleteTodo, findTargetTodoIndex, processTodoList, todoList } from "../logic/todo.js";
 import { updateReadTodoModal } from "./readTodoModal.js";
 import { todoBar } from "./todoBar.js";
 
@@ -14,10 +14,10 @@ function renderTodoList(todoList) {
 }
 
 function updateTodoList(todoList, startDate = "", endDate = "") {
-  const filteredTodoList = filterTodoList(todoList, startDate, endDate);
+  const processedTodoList = processTodoList(todoList, startDate, endDate);
 
   clearTodoList();
-  renderTodoList(filteredTodoList);
+  renderTodoList(processedTodoList);
 }
 
 function addTodoListListeners() {

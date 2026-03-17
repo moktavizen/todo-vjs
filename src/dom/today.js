@@ -1,16 +1,19 @@
-import { format } from "date-fns";
+import { endOfToday, format, startOfToday } from "date-fns";
 import { ELS, STATE } from "../globals.js";
-import { todoList } from "../logic/todo.js";
-import { updateTodoList } from "./todoList.js";
 
 function renderToday() {
+  STATE.page = "Today";
+  STATE.startDate = startOfToday();
+  STATE.endDate = endOfToday();
+  STATE.project = null;
+
   ELS.pageHeading.textContent = STATE.page;
   ELS.addTaskFormHeading.textContent = `Add Task: ${STATE.page}`;
 
   ELS.todoDateInput.setAttribute("min", format(STATE.startDate, "yyyy-MM-dd'T'HH:mm"));
   ELS.todoDateInput.setAttribute("max", format(STATE.endDate, "yyyy-MM-dd'T'HH:mm"));
 
-  updateTodoList(todoList, STATE.startDate, STATE.endDate, STATE.project);
+  ELS.content.dispatchEvent(new CustomEvent("todo-list-change"));
 }
 
 export { renderToday };

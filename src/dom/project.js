@@ -1,15 +1,18 @@
 import { ELS, STATE } from "../globals.js";
-import { todoList } from "../logic/todo.js";
-import { updateTodoList } from "./todoList.js";
 
-function renderProject() {
+function renderProject({ title } = {}) {
+  STATE.page = title;
+  STATE.startDate = null;
+  STATE.endDate = null;
+  STATE.project = title;
+
   ELS.pageHeading.textContent = STATE.page;
   ELS.addTaskFormHeading.textContent = `Add Task: ${STATE.page}`;
 
   ELS.todoDateInput.removeAttribute("min");
   ELS.todoDateInput.removeAttribute("max");
 
-  updateTodoList(todoList, STATE.startDate, STATE.endDate, STATE.project);
+  ELS.content.dispatchEvent(new CustomEvent("todo-list-change"));
 }
 
 export { renderProject };

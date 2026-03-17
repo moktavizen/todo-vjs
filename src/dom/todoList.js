@@ -38,6 +38,10 @@ function updateTodoList(todoList, startDate, endDate, project) {
 }
 
 function addTodoListListeners() {
+  ELS.content.addEventListener("todo-list-change", () => {
+    updateTodoList(todoList, STATE.startDate, STATE.endDate, STATE.project);
+  });
+
   ELS.content.addEventListener("click", (e) => {
     if (e.target.tagName !== "BUTTON") return;
 
@@ -53,7 +57,7 @@ function addTodoListListeners() {
         break;
       case "delete":
         deleteTodo(todoList, targetIndex);
-        updateTodoList(todoList, STATE.startDate, STATE.endDate, STATE.project);
+        ELS.content.dispatchEvent(new CustomEvent("todo-list-change"));
         break;
     }
   });

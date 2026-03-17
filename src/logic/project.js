@@ -1,5 +1,3 @@
-import { todoList } from "./todo.js";
-
 const projectList = [];
 
 class Project {
@@ -24,7 +22,7 @@ function addProject(title) {
 }
 
 function findTargetProjectIndex(projectList, targetId) {
-  return projectList.findIndex((todo) => todo.id === targetId);
+  return projectList.findIndex((project) => project.id === targetId);
 }
 
 export { Project, projectList, addProject, findTargetProjectIndex };

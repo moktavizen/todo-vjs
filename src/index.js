@@ -15,9 +15,9 @@ todoList.push(
 
 projectList.push(new Project("Library App"));
 
-renderTemplate();
-renderAll();
-
 addTemplateListeners();
 addTodoListListeners();
 addReadTodoModalListeners();
+
+renderTemplate();
+renderAll();

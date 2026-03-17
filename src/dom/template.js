@@ -1,10 +1,8 @@
-import { endOfToday, startOfToday, startOfTomorrow } from "date-fns";
 import { ELS, STATE } from "../globals.js";
 import { addTodo, todoList } from "../logic/todo.js";
 import { renderAll } from "./all.js";
 import { renderToday } from "./today.js";
 import { renderUpcoming } from "./upcoming.js";
-import { updateTodoList } from "./todoList.js";
 import { addProject, findTargetProjectIndex, projectList } from "../logic/project.js";
 import { projectButton } from "./projectButton.js";
 import { renderProject } from "./project.js";
@@ -44,38 +42,17 @@ function addTemplateListeners() {
     switch (e.target.id) {
       case "all-page-btn":
         if (STATE.page === "All") return;
-
-        STATE.page = "All";
-        STATE.project = null;
-        STATE.startDate = null;
-        STATE.endDate = null;
-
         renderCurrPageIndicator(ELS.allPageBtn);
-
         renderAll();
         break;
       case "today-page-btn":
         if (STATE.page === "Today") return;
-
-        STATE.page = "Today";
-        STATE.project = null;
-        STATE.startDate = startOfToday();
-        STATE.endDate = endOfToday();
-
         renderCurrPageIndicator(ELS.todayPageBtn);
-
         renderToday();
         break;
       case "upcoming-page-btn":
         if (STATE.page === "Upcoming") return;
-
-        STATE.page = "Upcoming";
-        STATE.project = null;
-        STATE.startDate = startOfTomorrow();
-        STATE.endDate = null;
-
         renderCurrPageIndicator(ELS.upcomingPageBtn);
-
         renderUpcoming();
         break;
       case "add-project-btn":
@@ -98,19 +75,11 @@ function addTemplateListeners() {
   ELS.projectList.addEventListener("click", (e) => {
     if (e.target.id !== "project-page-btn") return;
 
-    const targetProjectIndex = findTargetProjectIndex(projectList, e.target.dataset.projectId);
-    const targetProject = projectList[targetProjectIndex];
+    const targetIndex = findTargetProjectIndex(projectList, e.target.dataset.projectId);
 
-    if (STATE.page === targetProject.title) return;
-
-    STATE.page = targetProject.title;
-    STATE.project = targetProject.title;
-    STATE.startDate = null;
-    STATE.endDate = null;
-
+    if (STATE.page === projectList[targetIndex].title) return;
     renderCurrPageIndicator(e.target);
-
-    renderProject();
+    renderProject(projectList[targetIndex]);
   });
 
   ELS.addTodoBtn.addEventListener("click", () => {
@@ -130,9 +99,7 @@ function addTemplateListeners() {
       todoList,
     );
 
-    console.log(todoList);
-
-    updateTodoList(todoList, STATE.startDate, STATE.endDate, STATE.project);
+    ELS.content.dispatchEvent(new CustomEvent("todo-list-change"));
 
     ELS.addTodoModal.close();
     ELS.addTodoForm.reset();

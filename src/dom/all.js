@@ -9,7 +9,7 @@ function renderAll() {
   ELS.todoDateInput.removeAttribute("min");
   ELS.todoDateInput.removeAttribute("max");
 
-  updateTodoList(todoList);
+  updateTodoList(todoList, STATE.startDate, STATE.endDate, STATE.project);
 }
 
 export { renderAll };

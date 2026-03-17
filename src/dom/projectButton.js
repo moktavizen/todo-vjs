@@ -1,8 +1,11 @@
 import { ELS } from "../globals.js";
 
-function projectButton({ title } = {}) {
+function projectButton({ id, title } = {}) {
   const projectButton = document.createElement("button");
 
+  projectButton.id = "project-page-btn";
+  projectButton.classList = "page-btn";
+  projectButton.dataset.projectId = id;
   projectButton.innerHTML = `
     <svg
       xmlns="http://www.w3.org/2000/svg"

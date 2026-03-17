@@ -40,6 +40,7 @@ const STATE = {
   startDate: null,
   endDate: null,
   isEditModalOpen: false,
+  project: null,
 };
 
 export { ELS, STATE };

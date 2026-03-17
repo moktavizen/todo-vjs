@@ -93,7 +93,7 @@ function addReadTodoModalListeners() {
           ELS.readTodoPriority.value,
         );
 
-        updateTodoList(todoList, STATE.startDate, STATE.endDate);
+        updateTodoList(todoList, STATE.startDate, STATE.endDate, STATE.project);
 
         ELS.readTodoModal.close();
 

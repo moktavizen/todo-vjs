@@ -30,8 +30,8 @@ function renderTodoList(todoList) {
   }
 }
 
-function updateTodoList(todoList, startDate = "", endDate = "") {
-  const processedTodoList = processTodoList(todoList, startDate, endDate);
+function updateTodoList(todoList, startDate, endDate, project) {
+  const processedTodoList = processTodoList(todoList, startDate, endDate, project);
 
   clearTodoList();
   renderTodoList(processedTodoList);
@@ -53,7 +53,7 @@ function addTodoListListeners() {
         break;
       case "delete":
         deleteTodo(todoList, targetIndex);
-        updateTodoList(todoList, STATE.startDate, STATE.endDate);
+        updateTodoList(todoList, STATE.startDate, STATE.endDate, STATE.project);
         break;
     }
   });

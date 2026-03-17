@@ -8,16 +8,21 @@ class Todo {
   #description;
   #dueDate;
   #priority;
+  #project;
 
-  constructor(title, description, dueDate, priority) {
+  constructor(title, description, dueDate, priority, project) {
     this.#title = title;
     this.#description = description;
     this.#dueDate = dueDate;
     this.#priority = priority;
+    this.#project = project;
   }
 
   get id() {
     return this.#id;
+  }
+  get project() {
+    return this.#project;
   }
   get title() {
     return this.#title;
@@ -45,8 +50,8 @@ class Todo {
   }
 }
 
-function addTodo(title, description, dueDate, priority, todoList) {
-  const newTodo = new Todo(title, description, dueDate, priority);
+function addTodo(title, description, dueDate, priority, project, todoList) {
+  const newTodo = new Todo(title, description, dueDate, priority, project);
   todoList.push(newTodo);
 }
 
@@ -65,12 +70,14 @@ function findTargetTodoIndex(todoList, targetId) {
   return todoList.findIndex((todo) => todo.id === targetId);
 }
 
-function processTodoList(todoList, startDate = "", endDate = "") {
+function processTodoList(todoList, startDate, endDate, project) {
   let filteredTodoList;
-  if (!startDate && !endDate) {
+  if (!startDate && !endDate && !project) {
     filteredTodoList = todoList;
-  } else if (!endDate) {
+  } else if (!endDate && !project) {
     filteredTodoList = todoList.filter((todo) => isAfter(todo.dueDate, startDate));
+  } else if (!startDate && !endDate && project) {
+    filteredTodoList = todoList.filter((todo) => todo.project === project);
   } else {
     filteredTodoList = todoList.filter((todo) =>
       isWithinInterval(todo.dueDate, { start: startDate, end: endDate }),

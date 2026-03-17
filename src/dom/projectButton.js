@@ -17,13 +17,20 @@ function projectButton({ id, title } = {}) {
       stroke-width="2"
       stroke-linecap="round"
       stroke-linejoin="round"
-      class="lucide lucide-folder-clock-icon lucide-folder-clock"
+      class="lucide lucide-folder-cog-icon lucide-folder-cog"
     >
-      <path d="M16 14v2.2l1.6 1" />
       <path
-        d="M7 20H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H20a2 2 0 0 1 2 2"
+        d="M10.3 20H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.98a2 2 0 0 1 1.69.9l.66 1.2A2 2 0 0 0 12 6h8a2 2 0 0 1 2 2v3.3"
       />
-      <circle cx="16" cy="16" r="6" /></svg
+      <path d="m14.305 19.53.923-.382" />
+      <path d="m15.228 16.852-.923-.383" />
+      <path d="m16.852 15.228-.383-.923" />
+      <path d="m16.852 20.772-.383.924" />
+      <path d="m19.148 15.228.383-.923" />
+      <path d="m19.53 21.696-.382-.924" />
+      <path d="m20.772 16.852.924-.383" />
+      <path d="m20.772 19.148.924.383" />
+      <circle cx="18" cy="18" r="3" /></svg
     >${title}
   `;
 

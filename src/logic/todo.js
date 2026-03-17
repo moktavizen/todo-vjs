@@ -1,4 +1,4 @@
-import { compareAsc, isAfter, isWithinInterval } from "date-fns";
+import { compareAsc, isAfter, isBefore, isWithinInterval } from "date-fns";
 
 const todoList = [];
 
@@ -76,6 +76,8 @@ function processTodoList(todoList, startDate, endDate, project) {
     filteredTodoList = todoList;
   } else if (!endDate && !project) {
     filteredTodoList = todoList.filter((todo) => isAfter(todo.dueDate, startDate));
+  } else if (!startDate && !project) {
+    filteredTodoList = todoList.filter((todo) => isBefore(todo.dueDate, endDate));
   } else if (!startDate && !endDate && project) {
     filteredTodoList = todoList.filter((todo) => todo.project === project);
   } else {

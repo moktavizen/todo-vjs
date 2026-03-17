@@ -3,6 +3,7 @@ const ELS = {
   allPageBtn: document.querySelector("#all-page-btn"),
   todayPageBtn: document.querySelector("#today-page-btn"),
   upcomingPageBtn: document.querySelector("#upcoming-page-btn"),
+  pastPageBtn: document.querySelector("#past-page-btn"),
   addProjectModal: document.querySelector("#add-project-dialog"),
   addProjectForm: document.querySelector("#add-project-form"),
   projectTitleInput: document.querySelector("#project-title-input"),

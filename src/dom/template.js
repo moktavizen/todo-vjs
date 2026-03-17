@@ -6,6 +6,7 @@ import { renderUpcoming } from "./upcomingPage.js";
 import { addProject, findTargetProjectIndex, projectList } from "../logic/project.js";
 import { projectButton } from "./projectButton.js";
 import { renderProject } from "./project.js";
+import { renderPast } from "./pastPage.js";
 
 function clearProjectList() {
   ELS.projectList.replaceChildren();
@@ -54,6 +55,11 @@ function addTemplateListeners() {
         if (STATE.page === "Upcoming") return;
         renderCurrPageIndicator(ELS.upcomingPageBtn);
         renderUpcoming();
+        break;
+      case "past-page-btn":
+        if (STATE.page === "Past") return;
+        renderCurrPageIndicator(ELS.pastPageBtn);
+        renderPast();
         break;
       case "add-project-btn":
         ELS.addProjectModal.showModal();

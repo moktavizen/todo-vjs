@@ -23,7 +23,7 @@ function updateProjectList(projectList) {
 }
 
 function renderTemplate() {
-  updateProjectList(projectList);
+  ELS.projectList.dispatchEvent(new CustomEvent("project-list-change"));
 }
 
 function renderCurrPageIndicator(btnEl) {
@@ -64,12 +64,16 @@ function addTemplateListeners() {
 
         addProject(ELS.projectTitleInput.value);
 
-        updateProjectList(projectList);
+        ELS.projectList.dispatchEvent(new CustomEvent("project-list-change"));
 
         ELS.addProjectModal.close();
         ELS.addProjectForm.reset();
         break;
     }
+  });
+
+  ELS.projectList.addEventListener("project-list-change", () => {
+    updateProjectList(projectList);
   });
 
   ELS.projectList.addEventListener("click", (e) => {

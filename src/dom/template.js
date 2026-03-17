@@ -5,52 +5,87 @@ import { renderAll } from "./all.js";
 import { renderToday } from "./today.js";
 import { renderUpcoming } from "./upcoming.js";
 import { updateTodoList } from "./todoList.js";
+import { addProject, projectList } from "../logic/project.js";
+import { projectButton } from "./projectButton.js";
+
+function clearProjectList() {
+  ELS.projectList.replaceChildren();
+}
+
+function renderProjectList(projectList) {
+  for (const project of projectList) {
+    projectButton(project);
+  }
+}
+
+function updateProjectList(projectList) {
+  clearProjectList();
+  renderProjectList(projectList);
+}
+
+function renderTemplate() {
+  updateProjectList(projectList);
+}
 
 function addTemplateListeners() {
-  ELS.allPageBtn.addEventListener("click", () => {
-    if (STATE.page === "All") return;
+  ELS.sidebarNav.addEventListener("click", (e) => {
+    if (e.target.tagName !== "BUTTON") return;
 
-    STATE.page = "All";
-    STATE.startDate = null;
-    STATE.endDate = null;
+    switch (e.target.id) {
+      case "all-page-btn":
+        if (STATE.page === "All") return;
 
-    ELS.todayPageBtn.classList = "";
-    ELS.upcomingPageBtn.classList = "";
-    ELS.allPageBtn.classList = "curr-page";
+        STATE.page = "All";
+        STATE.startDate = null;
+        STATE.endDate = null;
 
-    renderAll();
-  });
+        ELS.todayPageBtn.classList = "";
+        ELS.upcomingPageBtn.classList = "";
+        ELS.allPageBtn.classList = "curr-page";
 
-  ELS.todayPageBtn.addEventListener("click", () => {
-    if (STATE.page === "Today") return;
+        renderAll();
+        break;
+      case "today-page-btn":
+        if (STATE.page === "Today") return;
 
-    STATE.page = "Today";
-    STATE.startDate = startOfToday();
-    STATE.endDate = endOfToday();
+        STATE.page = "Today";
+        STATE.startDate = startOfToday();
+        STATE.endDate = endOfToday();
 
-    ELS.allPageBtn.classList = "";
-    ELS.upcomingPageBtn.classList = "";
-    ELS.todayPageBtn.classList = "curr-page";
+        ELS.allPageBtn.classList = "";
+        ELS.upcomingPageBtn.classList = "";
+        ELS.todayPageBtn.classList = "curr-page";
 
-    renderToday();
-  });
+        renderToday();
+        break;
+      case "upcoming-page-btn":
+        if (STATE.page === "Upcoming") return;
 
-  ELS.upcomingPageBtn.addEventListener("click", () => {
-    if (STATE.page === "Upcoming") return;
+        STATE.page = "Upcoming";
+        STATE.startDate = startOfTomorrow();
+        STATE.endDate = null;
 
-    STATE.page = "Upcoming";
-    STATE.startDate = startOfTomorrow();
-    STATE.endDate = null;
+        ELS.allPageBtn.classList = "";
+        ELS.todayPageBtn.classList = "";
+        ELS.upcomingPageBtn.classList = "curr-page";
 
-    ELS.allPageBtn.classList = "";
-    ELS.todayPageBtn.classList = "";
-    ELS.upcomingPageBtn.classList = "curr-page";
+        renderUpcoming();
+        break;
+      case "add-project-btn":
+        ELS.addProjectModal.showModal();
+        break;
+      case "confirm-add-project-btn":
+        if (!ELS.addProjectForm.checkValidity()) return;
+        e.preventDefault();
 
-    renderUpcoming();
-  });
+        addProject(ELS.projectTitleInput.value);
 
-  ELS.addProjectBtn.addEventListener("click", () => {
-    ELS.addProjectDialog.showModal();
+        updateProjectList(projectList);
+
+        ELS.addProjectModal.close();
+        ELS.addProjectForm.reset();
+        break;
+    }
   });
 
   ELS.addTodoBtn.addEventListener("click", () => {
@@ -76,4 +111,4 @@ function addTemplateListeners() {
   });
 }
 
-export { addTemplateListeners };
+export { renderTemplate, addTemplateListeners };

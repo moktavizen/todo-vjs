@@ -2,9 +2,10 @@ import "./styles/reset.css";
 import "./styles/style.css";
 import { renderAll } from "./dom/all.js";
 import { addReadTodoModalListeners } from "./dom/readTodoModal.js";
-import { addTemplateListeners } from "./dom/template.js";
+import { addTemplateListeners, renderTemplate } from "./dom/template.js";
 import { addTodoListListeners } from "./dom/todoList.js";
 import { Todo, todoList } from "./logic/todo.js";
+import { Project, projectList } from "./logic/project.js";
 
 todoList.push(
   new Todo("John", "Doe", "2026-03-18T13:37", "Low"),
@@ -12,6 +13,13 @@ todoList.push(
   new Todo("Joni", "", "2026-03-17T13:37", "High"),
 );
 
+projectList.push(
+  new Project("Library App"),
+  new Project("Restaurant App"),
+  new Project("Todo App"),
+);
+
+renderTemplate();
 renderAll();
 
 addTemplateListeners();

@@ -1,8 +1,8 @@
 import { ELS, STATE } from "../globals.js";
 import { addTodo, todoList } from "../logic/todo.js";
-import { renderAll } from "./all.js";
-import { renderToday } from "./today.js";
-import { renderUpcoming } from "./upcoming.js";
+import { renderAll } from "./allPage.js";
+import { renderToday } from "./todayPage.js";
+import { renderUpcoming } from "./upcomingPage.js";
 import { addProject, findTargetProjectIndex, projectList } from "../logic/project.js";
 import { projectButton } from "./projectButton.js";
 import { renderProject } from "./project.js";

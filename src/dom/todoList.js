@@ -11,7 +11,7 @@ function renderEmptyTodoList() {
   const emptyTodoListDiv = document.createElement("div");
   emptyTodoListDiv.classList = "empty-todo-list";
   emptyTodoListDiv.innerHTML =
-    "There are no tasks in this category ☹️<br />Add new task using button at the top right corner!";
+    "There are no tasks ☹️<br />Add new task using button at the top right corner!";
 
   const contentNavHeight = ELS.contentNav.offsetHeight;
   const bottomPadding = 32;

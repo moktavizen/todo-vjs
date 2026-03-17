@@ -63,4 +63,4 @@ function addTodoListListeners() {
   });
 }
 
-export { updateTodoList, addTodoListListeners };
+export { addTodoListListeners };

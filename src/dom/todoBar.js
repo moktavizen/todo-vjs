@@ -4,8 +4,7 @@ import { ELS } from "../globals.js";
 function todoBar({ id, title, dueDate, priority } = {}) {
   const todoBarDiv = document.createElement("div");
 
-  todoBarDiv.classList = "todo-bar";
-  todoBarDiv.dataset.priority = priority.toLowerCase();
+  todoBarDiv.classList = `todo-bar ${priority.toLowerCase()}-priority`;
   todoBarDiv.innerHTML = `
     <span class="due-date">${format(dueDate, "dd/MM-kk:mm")}</span><span class="title">${title}</span
     ><button class="todo-btn expand" data-todo-id="${id}">

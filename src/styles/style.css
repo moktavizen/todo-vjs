@@ -255,11 +255,11 @@ dialog select {
   border-radius: 8px;
 }
 
-[data-priority="medium"] {
+.medium-priority {
   border-left: 6px solid var(--clr-prio-medium);
 }
 
-[data-priority="high"] {
+.high-priority {
   border-left: 6px solid var(--clr-prio-high);
 }
 

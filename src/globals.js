@@ -9,6 +9,10 @@ const ELS = {
   projectTitleInput: document.querySelector("#project-title-input"),
   projectList: document.querySelector("#project-list"),
   contentNav: document.querySelector("#content-nav"),
+  editProjectModal: document.querySelector("#edit-project-dialog"),
+  editProjectForm: document.querySelector("#edit-project-form"),
+  editProjectTitle: document.querySelector("#edit-project-title"),
+  confirmEditProjectBtn: document.querySelector("#confirm-edit-project-btn"),
   editProjectBtn: document.querySelector("#edit-project-btn"),
   addTodoBtn: document.querySelector("#add-task-btn"),
   addTodoModal: document.querySelector("#add-task-dialog"),
@@ -43,6 +47,7 @@ const STATE = {
   endDate: null,
   isEditModalOpen: false,
   project: null,
+  selectedProjectIndex: null,
 };
 
 export { ELS, STATE };

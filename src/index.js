@@ -6,6 +6,7 @@ import { addTemplateListeners, renderTemplate } from "./dom/template.js";
 import { addTodoListListeners } from "./dom/todoList.js";
 import { Todo, todoList } from "./logic/todo.js";
 import { Project, projectList } from "./logic/project.js";
+import { addEditProjectModalListeners } from "./dom/editProjectModal.js";
 
 todoList.push(
   new Todo("John", "Doe", "2026-03-19T13:37", "Low"),
@@ -18,6 +19,7 @@ projectList.push(new Project("Library App"));
 addTemplateListeners();
 addTodoListListeners();
 addReadTodoModalListeners();
+addEditProjectModalListeners();
 
 renderTemplate();
 renderAll();

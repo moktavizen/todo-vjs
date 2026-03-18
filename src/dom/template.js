@@ -7,6 +7,7 @@ import { addProject, findTargetProjectIndex, projectList } from "../logic/projec
 import { projectButton } from "./projectButton.js";
 import { renderProject } from "./projectPage.js";
 import { renderPast } from "./pastPage.js";
+import { updateEditProjectModal } from "./editProjectModal.js";
 
 function clearProjectList() {
   ELS.projectList.replaceChildren();
@@ -85,11 +86,21 @@ function addTemplateListeners() {
   ELS.projectList.addEventListener("click", (e) => {
     if (e.target.id !== "project-page-btn") return;
 
-    const targetIndex = findTargetProjectIndex(projectList, e.target.dataset.projectId);
+    STATE.selectedProjectIndex = findTargetProjectIndex(projectList, e.target.dataset.projectId);
+    const selectedProject = projectList[STATE.selectedProjectIndex];
 
-    if (STATE.page === projectList[targetIndex].title) return;
+    if (STATE.page === selectedProject.title) return;
     renderCurrPageIndicator(e.target);
-    renderProject(projectList[targetIndex]);
+    renderProject(selectedProject);
+  });
+
+  ELS.editProjectBtn.addEventListener("click", () => {
+    updateEditProjectModal();
+
+    ELS.editProjectModal.showModal();
+
+    ELS.editProjectTitle.focus();
+    ELS.editProjectTitle.setSelectionRange(0, -1);
   });
 
   ELS.addTodoBtn.addEventListener("click", () => {

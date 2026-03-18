@@ -14,6 +14,9 @@ class Project {
   get title() {
     return this.#title;
   }
+  set title(newTitle) {
+    this.#title = newTitle;
+  }
 }
 
 function addProject(title) {
@@ -21,8 +24,12 @@ function addProject(title) {
   projectList.push(newProject);
 }
 
+function editProject(project, newTitle) {
+  project.title = newTitle;
+}
+
 function findTargetProjectIndex(projectList, targetId) {
   return projectList.findIndex((project) => project.id === targetId);
 }
 
-export { Project, projectList, addProject, findTargetProjectIndex };
+export { Project, projectList, addProject, editProject, findTargetProjectIndex };

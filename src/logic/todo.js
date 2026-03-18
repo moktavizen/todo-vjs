@@ -21,9 +21,6 @@ class Todo {
   get id() {
     return this.#id;
   }
-  get project() {
-    return this.#project;
-  }
   get title() {
     return this.#title;
   }
@@ -47,6 +44,12 @@ class Todo {
   }
   set priority(newPriority) {
     this.#priority = newPriority;
+  }
+  get project() {
+    return this.#project;
+  }
+  set project(newProject) {
+    this.#project = newProject;
   }
 }
 
@@ -89,4 +92,20 @@ function processTodoList(todoList, startDate, endDate, project) {
   return filteredTodoList.sort((a, b) => compareAsc(a.dueDate, b.dueDate));
 }
 
-export { todoList, Todo, addTodo, editTodo, deleteTodo, findTargetTodoIndex, processTodoList };
+function editTodoListProject(project, newProject) {
+  for (const todo of todoList) {
+    if (todo.project !== project) continue;
+    todo.project = newProject;
+  }
+}
+
+export {
+  todoList,
+  Todo,
+  addTodo,
+  editTodo,
+  deleteTodo,
+  findTargetTodoIndex,
+  processTodoList,
+  editTodoListProject,
+};

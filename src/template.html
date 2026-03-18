@@ -163,6 +163,21 @@
     <span>
       <nav id="content-nav" class="content-nav">
         <h1 id="page-heading">All</h1>
+        <dialog id="edit-project-dialog">
+          <h2>Edit Project</h2>
+          <form id="edit-project-form">
+            <div>
+              <label for="edit-project-title">Title</label>
+              <input type="text" id="edit-project-title" placeholder="Todo App" required />
+            </div>
+            <div>
+              <button class="confirm-btn" id="confirm-edit-project-btn" type="submit" autofocus>
+                Confirm
+              </button>
+              <button class="cancel-btn" formmethod="dialog" formnovalidate>Cancel</button>
+            </div>
+          </form>
+        </dialog>
         <button id="edit-project-btn" class="edit-project-btn">Edit Project</button>
         <dialog id="add-task-dialog">
           <h2 id="add-task-form-heading">Add Task</h2>

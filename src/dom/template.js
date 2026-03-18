@@ -22,6 +22,11 @@ function renderProjectList(projectList) {
 function updateProjectList(projectList) {
   clearProjectList();
   renderProjectList(projectList);
+
+  // After `projectList` update, `curr-page` class gets removed from the project button
+  // We have to add it again.
+  if (STATE.selectedProjectIndex === null) return;
+  ELS.projectList.childNodes[STATE.selectedProjectIndex].classList.add("curr-page");
 }
 
 function renderTemplate() {

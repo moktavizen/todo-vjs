@@ -8,7 +8,7 @@ function renderAll() {
 
   ELS.pageHeading.textContent = STATE.page;
   ELS.editProjectBtn.style.display = "none";
-  ELS.addTaskFormHeading.textContent = `Add Task: ${STATE.page}`;
+  ELS.addTodoFormHeading.textContent = `Add Task: ${STATE.page}`;
 
   ELS.todoDateInput.removeAttribute("min");
   ELS.todoDateInput.removeAttribute("max");

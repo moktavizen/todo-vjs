@@ -42,10 +42,10 @@ function resetReadTodoForm() {
   ELS.readTodoDescription.removeAttribute("placeholder");
 
   ELS.confirmEditTodoBtn.setAttribute("id", "edit-read-task-btn");
-  ELS.editReadTaskBtn.classList = "edit-btn";
-  ELS.editReadTaskBtn.textContent = "Edit";
+  ELS.editReadTodoBtn.classList = "edit-btn";
+  ELS.editReadTodoBtn.textContent = "Edit";
 
-  ELS.cancelEditTaskBtn.setAttribute("id", "cancel-read-task-btn");
+  ELS.cancelEditTodoBtn.setAttribute("id", "cancel-read-task-btn");
 }
 
 function addReadTodoModalListeners() {
@@ -72,13 +72,13 @@ function addReadTodoModalListeners() {
         ELS.readTodoTitle.focus();
         ELS.readTodoTitle.setSelectionRange(0, -1);
 
-        ELS.editReadTaskBtn.setAttribute("id", "confirm-edit-task-btn");
+        ELS.editReadTodoBtn.setAttribute("id", "confirm-edit-task-btn");
         ELS.confirmEditTodoBtn = document.querySelector("#confirm-edit-task-btn");
         ELS.confirmEditTodoBtn.classList = "confirm-btn";
         ELS.confirmEditTodoBtn.textContent = "Confirm";
 
-        ELS.cancelReadTaskBtn.setAttribute("id", "cancel-edit-task-btn");
-        ELS.cancelEditTaskBtn = document.querySelector("#cancel-edit-task-btn");
+        ELS.cancelReadTodoBtn.setAttribute("id", "cancel-edit-task-btn");
+        ELS.cancelEditTodoBtn = document.querySelector("#cancel-edit-task-btn");
         break;
       case "confirm-edit-task-btn":
         if (!ELS.readTodoForm.checkValidity()) return;

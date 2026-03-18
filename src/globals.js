@@ -20,7 +20,7 @@ const ELS = {
   todoPrioritySelect: document.querySelector("#task-priority-select"),
   content: document.querySelector("#content"),
   pageHeading: document.querySelector("#page-heading"),
-  addTaskFormHeading: document.querySelector("#add-task-form-heading"),
+  addTodoFormHeading: document.querySelector("#add-task-form-heading"),
   readTodoFormHeading: document.querySelector("#read-task-form-heading"),
   readTodoTitle: document.querySelector("#read-task-title"),
   readTodoDescription: document.querySelector("#read-task-description"),
@@ -29,12 +29,12 @@ const ELS = {
   mediumPriorityOption: document.querySelector("#medium-priority-option"),
   highPriorityOption: document.querySelector("#high-priority-option"),
   readTodoModal: document.querySelector("#read-task-dialog"),
-  editReadTaskBtn: document.querySelector("#edit-read-task-btn"),
+  editReadTodoBtn: document.querySelector("#edit-read-task-btn"),
   readTodoForm: document.querySelector("#read-task-form"),
   readTodoPriority: document.querySelector("#read-task-priority"),
   confirmEditTodoBtn: null,
-  cancelReadTaskBtn: document.querySelector("#cancel-read-task-btn"),
-  cancelEditTaskBtn: null,
+  cancelReadTodoBtn: document.querySelector("#cancel-read-task-btn"),
+  cancelEditTodoBtn: null,
 };
 
 const STATE = {

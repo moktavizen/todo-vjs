@@ -5,7 +5,7 @@ import { renderToday } from "./todayPage.js";
 import { renderUpcoming } from "./upcomingPage.js";
 import { addProject, findTargetProjectIndex, projectList } from "../logic/project.js";
 import { projectButton } from "./projectButton.js";
-import { renderProject } from "./project.js";
+import { renderProject } from "./projectPage.js";
 import { renderPast } from "./pastPage.js";
 
 function clearProjectList() {

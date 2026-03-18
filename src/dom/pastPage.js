@@ -5,7 +5,7 @@ function renderPast() {
   STATE.page = "Past";
   STATE.startDate = null;
   STATE.endDate = endOfYesterday();
-  STATE.project = null;
+  STATE.projectTitle = null;
 
   ELS.pageHeading.textContent = STATE.page;
   ELS.editProjectBtn.style.display = "none";

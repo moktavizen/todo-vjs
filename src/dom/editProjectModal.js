@@ -4,8 +4,8 @@ import { editTodoListProject } from "../logic/todo.js";
 import { renderProject } from "./projectPage.js";
 
 function updateEditProjectModal() {
-  const selectedProject = projectList[STATE.selectedProjectIndex];
-  const { title } = selectedProject;
+  const currProject = projectList[STATE.projectIndex];
+  const { title } = currProject;
 
   ELS.editProjectTitle.setAttribute("value", title);
 }
@@ -15,14 +15,14 @@ function addEditProjectModalListeners() {
     if (!ELS.editProjectForm.checkValidity()) return;
     e.preventDefault();
 
-    const selectedProject = projectList[STATE.selectedProjectIndex];
+    const currProject = projectList[STATE.projectIndex];
 
-    editProject(selectedProject, ELS.editProjectTitle.value);
-    editTodoListProject(STATE.project, ELS.editProjectTitle.value);
+    editProject(currProject, ELS.editProjectTitle.value);
+    editTodoListProject(STATE.projectTitle, ELS.editProjectTitle.value);
 
     ELS.projectList.dispatchEvent(new CustomEvent("project-list-change"));
 
-    renderProject(selectedProject);
+    renderProject(currProject);
 
     ELS.editProjectModal.close();
     ELS.editProjectForm.reset();

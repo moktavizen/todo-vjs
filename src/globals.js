@@ -46,8 +46,8 @@ const STATE = {
   startDate: null,
   endDate: null,
   isEditModalOpen: false,
-  project: null,
-  selectedProjectIndex: null,
+  projectTitle: null,
+  projectIndex: null,
 };
 
 export { ELS, STATE };

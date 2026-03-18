@@ -8,14 +8,14 @@ class Todo {
   #description;
   #dueDate;
   #priority;
-  #project;
+  #projectTitle;
 
-  constructor(title, description, dueDate, priority, project) {
+  constructor(title, description, dueDate, priority, projectTitle) {
     this.#title = title;
     this.#description = description;
     this.#dueDate = dueDate;
     this.#priority = priority;
-    this.#project = project;
+    this.#projectTitle = projectTitle;
   }
 
   get id() {
@@ -45,11 +45,11 @@ class Todo {
   set priority(newPriority) {
     this.#priority = newPriority;
   }
-  get project() {
-    return this.#project;
+  get projectTitle() {
+    return this.#projectTitle;
   }
-  set project(newProject) {
-    this.#project = newProject;
+  set projectTitle(newProjectTitle) {
+    this.#projectTitle = newProjectTitle;
   }
 }
 
@@ -69,20 +69,20 @@ function deleteTodo(todoList, todoIndex) {
   todoList.splice(todoIndex, 1);
 }
 
-function findTargetTodoIndex(todoList, targetId) {
-  return todoList.findIndex((todo) => todo.id === targetId);
+function getTodoIndex(todoList, todoId) {
+  return todoList.findIndex((todo) => todo.id === todoId);
 }
 
-function processTodoList(todoList, startDate, endDate, project) {
+function processTodoList(todoList, startDate, endDate, projectTitle) {
   let filteredTodoList;
-  if (!startDate && !endDate && !project) {
+  if (!startDate && !endDate && !projectTitle) {
     filteredTodoList = todoList;
-  } else if (!endDate && !project) {
+  } else if (!endDate && !projectTitle) {
     filteredTodoList = todoList.filter((todo) => isAfter(todo.dueDate, startDate));
-  } else if (!startDate && !project) {
+  } else if (!startDate && !projectTitle) {
     filteredTodoList = todoList.filter((todo) => isBefore(todo.dueDate, endDate));
-  } else if (!startDate && !endDate && project) {
-    filteredTodoList = todoList.filter((todo) => todo.project === project);
+  } else if (!startDate && !endDate && projectTitle) {
+    filteredTodoList = todoList.filter((todo) => todo.projectTitle === projectTitle);
   } else {
     filteredTodoList = todoList.filter((todo) =>
       isWithinInterval(todo.dueDate, { start: startDate, end: endDate }),
@@ -92,10 +92,10 @@ function processTodoList(todoList, startDate, endDate, project) {
   return filteredTodoList.sort((a, b) => compareAsc(a.dueDate, b.dueDate));
 }
 
-function editTodoListProject(project, newProject) {
+function editTodoListProject(currProjectTitle, newProjectTitle) {
   for (const todo of todoList) {
-    if (todo.project !== project) continue;
-    todo.project = newProject;
+    if (todo.projectTitle !== currProjectTitle) continue;
+    todo.projectTitle = newProjectTitle;
   }
 }
 
@@ -105,7 +105,7 @@ export {
   addTodo,
   editTodo,
   deleteTodo,
-  findTargetTodoIndex,
+  getTodoIndex,
   processTodoList,
   editTodoListProject,
 };

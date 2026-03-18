@@ -5,7 +5,7 @@ function renderToday() {
   STATE.page = "Today";
   STATE.startDate = startOfToday();
   STATE.endDate = endOfToday();
-  STATE.project = null;
+  STATE.projectTitle = null;
 
   ELS.pageHeading.textContent = STATE.page;
   ELS.editProjectBtn.style.display = "none";

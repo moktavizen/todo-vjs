@@ -4,7 +4,7 @@ function renderProject({ title } = {}) {
   STATE.page = title;
   STATE.startDate = null;
   STATE.endDate = null;
-  STATE.project = title;
+  STATE.projectTitle = title;
 
   ELS.pageHeading.textContent = STATE.page;
   ELS.editProjectBtn.style.display = "inline-flex";

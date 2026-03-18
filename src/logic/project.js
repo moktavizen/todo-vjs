@@ -28,8 +28,8 @@ function editProject(project, newTitle) {
   project.title = newTitle;
 }
 
-function findTargetProjectIndex(projectList, targetId) {
-  return projectList.findIndex((project) => project.id === targetId);
+function getProjectIndex(projectList, projectId) {
+  return projectList.findIndex((project) => project.id === projectId);
 }
 
-export { Project, projectList, addProject, editProject, findTargetProjectIndex };
+export { Project, projectList, addProject, editProject, getProjectIndex };

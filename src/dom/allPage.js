@@ -4,7 +4,7 @@ function renderAll() {
   STATE.page = "All";
   STATE.startDate = null;
   STATE.endDate = null;
-  STATE.project = null;
+  STATE.projectTitle = null;
 
   ELS.pageHeading.textContent = STATE.page;
   ELS.editProjectBtn.style.display = "none";

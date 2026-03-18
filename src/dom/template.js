@@ -3,7 +3,7 @@ import { addTodo, todoList } from "../logic/todo.js";
 import { renderAll } from "./allPage.js";
 import { renderToday } from "./todayPage.js";
 import { renderUpcoming } from "./upcomingPage.js";
-import { addProject, findTargetProjectIndex, projectList } from "../logic/project.js";
+import { addProject, getProjectIndex, projectList } from "../logic/project.js";
 import { projectButton } from "./projectButton.js";
 import { renderProject } from "./projectPage.js";
 import { renderPast } from "./pastPage.js";
@@ -25,8 +25,8 @@ function updateProjectList(projectList) {
 
   // After `projectList` update, `curr-page` class gets removed from the project button
   // We have to add it again.
-  if (STATE.selectedProjectIndex === null) return;
-  ELS.projectList.childNodes[STATE.selectedProjectIndex].classList.add("curr-page");
+  if (STATE.projectIndex === null) return;
+  ELS.projectList.childNodes[STATE.projectIndex].classList.add("curr-page");
 }
 
 function renderTemplate() {
@@ -91,12 +91,12 @@ function addTemplateListeners() {
   ELS.projectList.addEventListener("click", (e) => {
     if (e.target.id !== "project-page-btn") return;
 
-    STATE.selectedProjectIndex = findTargetProjectIndex(projectList, e.target.dataset.projectId);
-    const selectedProject = projectList[STATE.selectedProjectIndex];
+    STATE.projectIndex = getProjectIndex(projectList, e.target.dataset.projectId);
+    const currProject = projectList[STATE.projectIndex];
 
-    if (STATE.page === selectedProject.title) return;
+    if (STATE.page === currProject.title) return;
     renderCurrPageIndicator(e.target);
-    renderProject(selectedProject);
+    renderProject(currProject);
   });
 
   ELS.editProjectBtn.addEventListener("click", () => {
@@ -121,7 +121,7 @@ function addTemplateListeners() {
       ELS.todoDescriptionInput.value,
       ELS.todoDateInput.value,
       ELS.todoPrioritySelect.value,
-      STATE.project,
+      STATE.projectTitle,
       todoList,
     );
 

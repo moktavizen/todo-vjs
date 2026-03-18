@@ -1,6 +1,7 @@
 import { compareAsc, isAfter, isBefore, isWithinInterval } from "date-fns";
+import { getListFromStorage, saveListToStorage } from "./localStorage.js";
 
-const todoList = [];
+const todoList = getListFromStorage("todoList");
 
 class Todo {
   #id = crypto.randomUUID();
@@ -56,6 +57,8 @@ class Todo {
 function addTodo(title, description, dueDate, priority, project, todoList) {
   const newTodo = new Todo(title, description, dueDate, priority, project);
   todoList.push(newTodo);
+
+  saveListToStorage("todoList", todoList);
 }
 
 function editTodo(todo, newTitle, newDescription, newDueDate, newPriority) {
@@ -63,10 +66,14 @@ function editTodo(todo, newTitle, newDescription, newDueDate, newPriority) {
   todo.description = newDescription;
   todo.dueDate = newDueDate;
   todo.priority = newPriority;
+
+  saveListToStorage("todoList", todoList);
 }
 
 function deleteTodo(todoList, todoIndex) {
   todoList.splice(todoIndex, 1);
+
+  saveListToStorage("todoList", todoList);
 }
 
 function getTodoIndex(todoList, todoId) {
@@ -97,6 +104,8 @@ function editTodoListProject(currProjectTitle, newProjectTitle) {
     if (todo.projectTitle !== currProjectTitle) continue;
     todo.projectTitle = newProjectTitle;
   }
+
+  saveListToStorage("todoList", todoList);
 }
 
 function deleteTodoListProject(currProjectTitle) {
@@ -107,11 +116,12 @@ function deleteTodoListProject(currProjectTitle) {
     }
     index++;
   }
+
+  saveListToStorage("todoList", todoList);
 }
 
 export {
   todoList,
-  Todo,
   addTodo,
   editTodo,
   deleteTodo,

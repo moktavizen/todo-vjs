@@ -52,6 +52,17 @@ class Todo {
   set projectTitle(newProjectTitle) {
     this.#projectTitle = newProjectTitle;
   }
+
+  toJSON() {
+    return {
+      id: this.#id,
+      title: this.#title,
+      description: this.#description,
+      dueDate: this.#dueDate,
+      priority: this.#priority,
+      projectTitle: this.#projectTitle,
+    };
+  }
 }
 
 function addTodo(title, description, dueDate, priority, project, todoList) {

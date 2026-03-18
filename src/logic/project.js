@@ -19,6 +19,13 @@ class Project {
   set title(newTitle) {
     this.#title = newTitle;
   }
+
+  toJSON() {
+    return {
+      id: this.#id,
+      title: this.#title,
+    };
+  }
 }
 
 function addProject(title) {

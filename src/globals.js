@@ -45,6 +45,7 @@ const STATE = {
   page: "All",
   startDate: null,
   endDate: null,
+  todoIndex: null,
   isEditModalOpen: false,
   projectTitle: null,
   projectIndex: null,

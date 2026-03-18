@@ -45,18 +45,19 @@ function addTodoListListeners() {
   ELS.content.addEventListener("click", (e) => {
     if (e.target.tagName !== "BUTTON") return;
 
-    const currTodoIndex = getTodoIndex(todoList, e.target.dataset.todoId);
+    STATE.todoIndex = getTodoIndex(todoList, e.target.dataset.todoId);
+    const currTodo = todoList[STATE.todoIndex];
 
     switch (e.target.classList[1]) {
       case "expand":
-        updateReadTodoModal(currTodoIndex, todoList[currTodoIndex]);
+        updateReadTodoModal(currTodo);
         ELS.readTodoModal.showModal();
         break;
       case "done":
         e.target.parentElement.classList.toggle("marked");
         break;
       case "delete":
-        deleteTodo(todoList, currTodoIndex);
+        deleteTodo(todoList, STATE.todoIndex);
         ELS.content.dispatchEvent(new CustomEvent("todo-list-change"));
         break;
     }

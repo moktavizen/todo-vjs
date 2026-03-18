@@ -99,6 +99,16 @@ function editTodoListProject(currProjectTitle, newProjectTitle) {
   }
 }
 
+function deleteTodoListProject(currProjectTitle) {
+  let index = 0;
+  for (const todo of todoList) {
+    if (todo.projectTitle === currProjectTitle) {
+      todoList.splice(index, 1);
+    }
+    index++;
+  }
+}
+
 export {
   todoList,
   Todo,
@@ -108,4 +118,5 @@ export {
   getTodoIndex,
   processTodoList,
   editTodoListProject,
+  deleteTodoListProject,
 };

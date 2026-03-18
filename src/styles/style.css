@@ -217,6 +217,18 @@ dialog select {
   opacity: 0.7;
 }
 
+.delete-btn {
+  background-color: var(--clr-prio-high);
+  color: var(--clr-surface);
+  margin-right: 8px;
+  padding: 6px 10px;
+}
+
+.delete-btn:hover {
+  background-color: var(--clr-prio-high);
+  opacity: 0.7;
+}
+
 .cancel-btn {
   background-color: var(--clr-surface-highest);
   padding: 6px 10px;

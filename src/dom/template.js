@@ -22,11 +22,6 @@ function renderProjectList(projectList) {
 function updateProjectList(projectList) {
   clearProjectList();
   renderProjectList(projectList);
-
-  // After `projectList` update, `curr-page` class gets removed from the project button
-  // We have to add it again.
-  if (STATE.projectIndex === null) return;
-  ELS.projectList.childNodes[STATE.projectIndex].classList.add("curr-page");
 }
 
 function renderTemplate() {
@@ -84,8 +79,13 @@ function addTemplateListeners() {
     }
   });
 
-  ELS.projectList.addEventListener("project-list-change", () => {
+  ELS.projectList.addEventListener("project-list-change", (e) => {
     updateProjectList(projectList);
+
+    // After `projectList` update, `curr-page` class gets removed from the project button
+    // We have to add it again.
+    if (STATE.projectIndex === null || e.detail) return;
+    ELS.projectList.childNodes[STATE.projectIndex].classList.add("curr-page");
   });
 
   ELS.projectList.addEventListener("click", (e) => {
@@ -132,4 +132,4 @@ function addTemplateListeners() {
   });
 }
 
-export { renderTemplate, addTemplateListeners };
+export { renderTemplate, renderCurrPageIndicator, addTemplateListeners };

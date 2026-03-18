@@ -28,8 +28,12 @@ function editProject(project, newTitle) {
   project.title = newTitle;
 }
 
+function deleteProject(projectList, projectIndex) {
+  projectList.splice(projectIndex, 1);
+}
+
 function getProjectIndex(projectList, projectId) {
   return projectList.findIndex((project) => project.id === projectId);
 }
 
-export { Project, projectList, addProject, editProject, getProjectIndex };
+export { Project, projectList, addProject, editProject, deleteProject, getProjectIndex };

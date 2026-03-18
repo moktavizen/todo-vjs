@@ -13,6 +13,7 @@ const ELS = {
   editProjectForm: document.querySelector("#edit-project-form"),
   editProjectTitle: document.querySelector("#edit-project-title"),
   confirmEditProjectBtn: document.querySelector("#confirm-edit-project-btn"),
+  deleteProjectBtn: document.querySelector("#delete-project-btn"),
   editProjectBtn: document.querySelector("#edit-project-btn"),
   addTodoBtn: document.querySelector("#add-task-btn"),
   addTodoModal: document.querySelector("#add-task-dialog"),

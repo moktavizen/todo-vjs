@@ -7,6 +7,7 @@ function renderProject({ title } = {}) {
   STATE.project = title;
 
   ELS.pageHeading.textContent = STATE.page;
+  ELS.editProjectBtn.style.display = "inline-flex";
   ELS.addTaskFormHeading.textContent = `Add Task: ${STATE.page}`;
 
   ELS.todoDateInput.removeAttribute("min");

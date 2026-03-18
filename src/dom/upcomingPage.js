@@ -8,6 +8,7 @@ function renderUpcoming() {
   STATE.project = null;
 
   ELS.pageHeading.textContent = STATE.page;
+  ELS.editProjectBtn.style.display = "none";
   ELS.addTaskFormHeading.textContent = `Add Task: ${STATE.page}`;
 
   ELS.todoDateInput.setAttribute("min", format(STATE.startDate, "yyyy-MM-dd'T'HH:mm"));

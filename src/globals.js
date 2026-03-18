@@ -9,6 +9,7 @@ const ELS = {
   projectTitleInput: document.querySelector("#project-title-input"),
   projectList: document.querySelector("#project-list"),
   contentNav: document.querySelector("#content-nav"),
+  editProjectBtn: document.querySelector("#edit-project-btn"),
   addTodoBtn: document.querySelector("#add-task-btn"),
   addTodoModal: document.querySelector("#add-task-dialog"),
   confirmAddTodoBtn: document.querySelector("#confirm-add-task-btn"),

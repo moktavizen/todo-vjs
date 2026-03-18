@@ -8,6 +8,7 @@ function renderPast() {
   STATE.project = null;
 
   ELS.pageHeading.textContent = STATE.page;
+  ELS.editProjectBtn.style.display = "none";
   ELS.addTaskFormHeading.textContent = `Add Task: ${STATE.page}`;
 
   ELS.todoDateInput.removeAttribute("min");

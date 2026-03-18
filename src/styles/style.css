@@ -128,8 +128,26 @@ a:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 16px;
 
   padding: 32px;
+}
+
+.edit-project-btn {
+  background-color: var(--clr-surface-highest);
+  font-size: 1rem;
+
+  border-radius: 8px;
+  padding: 6px 10px;
+
+  margin-left: auto;
+
+  display: none;
+}
+
+.edit-project-btn:hover {
+  background-color: var(--clr-prio-medium);
+  color: var(--clr-surface);
 }
 
 .add-task-btn {

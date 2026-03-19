@@ -63,7 +63,7 @@ class Todo {
   }
 }
 
-const todoList = getListFromStorage("todoList");
+const todoList = getListFromStorage("todoList") || [];
 
 function addTodo(title, description, dueDate, priority, projectTitle) {
   const newTodo = new Todo(title, description, dueDate, priority, projectTitle);

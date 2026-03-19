@@ -26,7 +26,7 @@ class Project {
   }
 }
 
-const projectList = getListFromStorage("projectList");
+const projectList = getListFromStorage("projectList") || [];
 
 function addProject(title) {
   const newProject = new Project(title);

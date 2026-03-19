@@ -1,6 +1,6 @@
 import { ELS, STATE } from "../globals.js";
 import { deleteProject, editProject, projectList } from "../logic/project.js";
-import { deleteTodoListProject, editTodoListProject, todoList } from "../logic/todo.js";
+import { deleteTodoListProject, editTodoListProject } from "../logic/todo.js";
 import { renderAll } from "./allPage.js";
 import { renderProject } from "./projectPage.js";
 import { renderCurrPageIndicator } from "./template.js";

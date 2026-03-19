@@ -13,7 +13,7 @@ body {
   background-color: var(--clr-white);
   height: 100vh;
 
-  font-family: sans-serif;
+  font-family: "Figtree", sans-serif;
   color: var(--clr-on-surface);
 
   display: grid;
@@ -288,7 +288,8 @@ dialog select {
 }
 
 .due-date {
-  font-family: monospace;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.875rem;
   line-height: normal;
 }
 

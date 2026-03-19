@@ -1,5 +1,6 @@
 import "./styles/reset.css";
 import "./styles/style.css";
+import "./styles/fonts.css";
 import { renderAll } from "./dom/allPage.js";
 import { addReadTodoModalListeners } from "./dom/readTodoModal.js";
 import { addTemplateListeners, renderTemplate } from "./dom/template.js";

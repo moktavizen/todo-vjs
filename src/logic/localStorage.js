@@ -13,6 +13,7 @@ function getListFromStorage(listName) {
 function initLocalStorage() {
   if (!localStorage.getItem("projectList") && !localStorage.getItem("todoList")) {
     addProject("Foo App");
+    addProject("Bar App");
 
     addTodo(
       "Task for today",

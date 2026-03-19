@@ -1,5 +1,5 @@
 import { ELS, STATE } from "../globals.js";
-import { editTodo, todoList } from "../logic/todo.js";
+import { editTodo, getTodo } from "../logic/todo.js";
 
 function updateReadTodoModal({ title, description, dueDate, priority } = {}) {
   ELS.readTodoTitle.setAttribute("value", title);
@@ -80,8 +80,9 @@ function addReadTodoModalListeners() {
         if (!ELS.readTodoForm.checkValidity()) return;
         e.preventDefault();
 
+        const currTodo = getTodo(STATE.todoIndex);
         editTodo(
-          todoList[STATE.todoIndex],
+          currTodo,
           ELS.readTodoTitle.value,
           ELS.readTodoDescription.value,
           ELS.readTodoDate.value,

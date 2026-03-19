@@ -1,5 +1,5 @@
 import { ELS, STATE } from "../globals.js";
-import { deleteTodo, getTodoIndex, processTodoList, todoList } from "../logic/todo.js";
+import { deleteTodo, getTodo, getTodoIndex, getTodoList } from "../logic/todo.js";
 import { updateReadTodoModal } from "./readTodoModal.js";
 import { todoBar } from "./todoBar.js";
 
@@ -30,23 +30,23 @@ function renderTodoList(todoList) {
   }
 }
 
-function updateTodoList(todoList, startDate, endDate, projectTitle) {
-  const processedTodoList = processTodoList(todoList, startDate, endDate, projectTitle);
+function updateTodoList(startDate, endDate, projectTitle) {
+  const todoList = getTodoList(startDate, endDate, projectTitle);
 
   clearTodoList();
-  renderTodoList(processedTodoList);
+  renderTodoList(todoList);
 }
 
 function addTodoListListeners() {
   ELS.content.addEventListener("todo-list-change", () => {
-    updateTodoList(todoList, STATE.startDate, STATE.endDate, STATE.projectTitle);
+    updateTodoList(STATE.startDate, STATE.endDate, STATE.projectTitle);
   });
 
   ELS.content.addEventListener("click", (e) => {
     if (e.target.tagName !== "BUTTON") return;
 
-    STATE.todoIndex = getTodoIndex(todoList, e.target.dataset.todoId);
-    const currTodo = todoList[STATE.todoIndex];
+    STATE.todoIndex = getTodoIndex(e.target.dataset.todoId);
+    const currTodo = getTodo([STATE.todoIndex]);
 
     switch (e.target.classList[1]) {
       case "expand":
@@ -57,7 +57,7 @@ function addTodoListListeners() {
         e.target.parentElement.classList.toggle("marked");
         break;
       case "delete":
-        deleteTodo(todoList, STATE.todoIndex);
+        deleteTodo(STATE.todoIndex);
         ELS.content.dispatchEvent(new CustomEvent("todo-list-change"));
         break;
     }

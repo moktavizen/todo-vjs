@@ -1,9 +1,9 @@
 import { ELS, STATE } from "../globals.js";
-import { addTodo, todoList } from "../logic/todo.js";
+import { addTodo } from "../logic/todo.js";
 import { renderAll } from "./allPage.js";
 import { renderToday } from "./todayPage.js";
 import { renderUpcoming } from "./upcomingPage.js";
-import { addProject, getProjectIndex, projectList } from "../logic/project.js";
+import { addProject, getProject, getProjectIndex, getProjectList } from "../logic/project.js";
 import { projectButton } from "./projectButton.js";
 import { renderProject } from "./projectPage.js";
 import { renderPast } from "./pastPage.js";
@@ -19,7 +19,9 @@ function renderProjectList(projectList) {
   }
 }
 
-function updateProjectList(projectList) {
+function updateProjectList() {
+  const projectList = getProjectList();
+
   clearProjectList();
   renderProjectList(projectList);
 }
@@ -80,7 +82,7 @@ function addTemplateListeners() {
   });
 
   ELS.projectList.addEventListener("project-list-change", (e) => {
-    updateProjectList(projectList);
+    updateProjectList();
 
     // After `projectList` update, `curr-page` class gets removed from the project button
     // We have to add it again.
@@ -91,8 +93,8 @@ function addTemplateListeners() {
   ELS.projectList.addEventListener("click", (e) => {
     if (e.target.id !== "project-page-btn") return;
 
-    STATE.projectIndex = getProjectIndex(projectList, e.target.dataset.projectId);
-    const currProject = projectList[STATE.projectIndex];
+    STATE.projectIndex = getProjectIndex(e.target.dataset.projectId);
+    const currProject = getProject(STATE.projectIndex);
 
     if (STATE.page === currProject.title) return;
     renderCurrPageIndicator(e.target);
@@ -100,7 +102,8 @@ function addTemplateListeners() {
   });
 
   ELS.editProjectBtn.addEventListener("click", () => {
-    updateEditProjectModal();
+    const currProject = getProject(STATE.projectIndex);
+    updateEditProjectModal(currProject);
 
     ELS.editProjectModal.showModal();
 
@@ -122,7 +125,6 @@ function addTemplateListeners() {
       ELS.todoDateInput.value,
       ELS.todoPrioritySelect.value,
       STATE.projectTitle,
-      todoList,
     );
 
     ELS.content.dispatchEvent(new CustomEvent("todo-list-change"));

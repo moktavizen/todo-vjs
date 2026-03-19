@@ -1,14 +1,11 @@
 import { ELS, STATE } from "../globals.js";
-import { deleteProject, editProject, projectList } from "../logic/project.js";
+import { deleteProject, editProject, getProject } from "../logic/project.js";
 import { deleteTodoListProject, editTodoListProject } from "../logic/todo.js";
 import { renderAll } from "./allPage.js";
 import { renderProject } from "./projectPage.js";
 import { renderCurrPageIndicator } from "./template.js";
 
-function updateEditProjectModal() {
-  const currProject = projectList[STATE.projectIndex];
-  const { title } = currProject;
-
+function updateEditProjectModal({ title } = {}) {
   ELS.editProjectTitle.setAttribute("value", title);
 }
 
@@ -17,7 +14,7 @@ function addEditProjectModalListeners() {
     if (!ELS.editProjectForm.checkValidity()) return;
     e.preventDefault();
 
-    const currProject = projectList[STATE.projectIndex];
+    const currProject = getProject(STATE.projectIndex);
 
     editProject(currProject, ELS.editProjectTitle.value);
     editTodoListProject(STATE.projectTitle, ELS.editProjectTitle.value);
@@ -33,7 +30,7 @@ function addEditProjectModalListeners() {
   ELS.deleteProjectBtn.addEventListener("click", (e) => {
     e.preventDefault();
 
-    deleteProject(projectList, STATE.projectIndex);
+    deleteProject(STATE.projectIndex);
     deleteTodoListProject(STATE.projectTitle);
 
     ELS.projectList.dispatchEvent(

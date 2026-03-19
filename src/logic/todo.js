@@ -1,8 +1,6 @@
 import { compareAsc, isAfter, isBefore, isWithinInterval } from "date-fns";
 import { getListFromStorage, saveListToStorage } from "./localStorage.js";
 
-const todoList = getListFromStorage("todoList");
-
 class Todo {
   #id = crypto.randomUUID();
   #title;
@@ -65,33 +63,16 @@ class Todo {
   }
 }
 
-function addTodo(title, description, dueDate, priority, project, todoList) {
-  const newTodo = new Todo(title, description, dueDate, priority, project);
+const todoList = getListFromStorage("todoList");
+
+function addTodo(title, description, dueDate, priority, projectTitle) {
+  const newTodo = new Todo(title, description, dueDate, priority, projectTitle);
   todoList.push(newTodo);
 
   saveListToStorage("todoList", todoList);
 }
 
-function editTodo(todo, newTitle, newDescription, newDueDate, newPriority) {
-  todo.title = newTitle;
-  todo.description = newDescription;
-  todo.dueDate = newDueDate;
-  todo.priority = newPriority;
-
-  saveListToStorage("todoList", todoList);
-}
-
-function deleteTodo(todoList, todoIndex) {
-  todoList.splice(todoIndex, 1);
-
-  saveListToStorage("todoList", todoList);
-}
-
-function getTodoIndex(todoList, todoId) {
-  return todoList.findIndex((todo) => todo.id === todoId);
-}
-
-function processTodoList(todoList, startDate, endDate, projectTitle) {
+function getTodoList(startDate, endDate, projectTitle) {
   let filteredTodoList;
   if (!startDate && !endDate && !projectTitle) {
     filteredTodoList = todoList;
@@ -110,11 +91,34 @@ function processTodoList(todoList, startDate, endDate, projectTitle) {
   return filteredTodoList.sort((a, b) => compareAsc(a.dueDate, b.dueDate));
 }
 
+function getTodoIndex(todoId) {
+  return todoList.findIndex((todo) => todo.id === todoId);
+}
+
+function getTodo(todoIndex) {
+  return todoList[todoIndex];
+}
+
+function editTodo(todo, newTitle, newDescription, newDueDate, newPriority) {
+  todo.title = newTitle;
+  todo.description = newDescription;
+  todo.dueDate = newDueDate;
+  todo.priority = newPriority;
+
+  saveListToStorage("todoList", todoList);
+}
+
 function editTodoListProject(currProjectTitle, newProjectTitle) {
   for (const todo of todoList) {
     if (todo.projectTitle !== currProjectTitle) continue;
     todo.projectTitle = newProjectTitle;
   }
+
+  saveListToStorage("todoList", todoList);
+}
+
+function deleteTodo(todoIndex) {
+  todoList.splice(todoIndex, 1);
 
   saveListToStorage("todoList", todoList);
 }
@@ -132,12 +136,12 @@ function deleteTodoListProject(currProjectTitle) {
 }
 
 export {
-  todoList,
   addTodo,
-  editTodo,
-  deleteTodo,
+  getTodoList,
   getTodoIndex,
-  processTodoList,
+  getTodo,
+  editTodo,
   editTodoListProject,
+  deleteTodo,
   deleteTodoListProject,
 };

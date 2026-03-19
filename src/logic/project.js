@@ -1,7 +1,5 @@
 import { getListFromStorage, saveListToStorage } from "./localStorage.js";
 
-const projectList = getListFromStorage("projectList");
-
 class Project {
   #id = crypto.randomUUID();
   #title;
@@ -28,11 +26,25 @@ class Project {
   }
 }
 
+const projectList = getListFromStorage("projectList");
+
 function addProject(title) {
   const newProject = new Project(title);
   projectList.push(newProject);
 
   saveListToStorage("projectList", projectList);
+}
+
+function getProjectList() {
+  return projectList;
+}
+
+function getProjectIndex(projectId) {
+  return projectList.findIndex((project) => project.id === projectId);
+}
+
+function getProject(projectIndex) {
+  return projectList[projectIndex];
 }
 
 function editProject(project, newTitle) {
@@ -41,14 +53,10 @@ function editProject(project, newTitle) {
   saveListToStorage("projectList", projectList);
 }
 
-function deleteProject(projectList, projectIndex) {
+function deleteProject(projectIndex) {
   projectList.splice(projectIndex, 1);
 
   saveListToStorage("projectList", projectList);
 }
 
-function getProjectIndex(projectList, projectId) {
-  return projectList.findIndex((project) => project.id === projectId);
-}
-
-export { projectList, addProject, editProject, deleteProject, getProjectIndex };
+export { addProject, getProjectList, getProjectIndex, getProject, editProject, deleteProject };

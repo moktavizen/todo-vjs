@@ -248,15 +248,16 @@ dialog select {
 }
 
 #content {
-  width: 80ch;
-  margin: auto;
+  padding: 0 32px;
 
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 4px;
 }
 
 .todo-bar {
+  width: 80ch;
   background-color: var(--clr-surface-high);
 
   display: flex;

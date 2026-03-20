@@ -335,6 +335,7 @@ dialog select {
 }
 
 .empty-todo-list {
+  height: 100%;
   display: grid;
   place-items: center;
   text-align: center;

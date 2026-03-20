@@ -13,10 +13,6 @@ function renderEmptyTodoList() {
   emptyTodoListDiv.innerHTML =
     "There are no tasks ☹️<br />Add new task using button at the top right corner!";
 
-  const contentNavHeight = ELS.contentNav.offsetHeight;
-  const bottomPadding = 32;
-  emptyTodoListDiv.style.height = `${window.innerHeight - contentNavHeight - bottomPadding}px`;
-
   ELS.content.appendChild(emptyTodoListDiv);
 }
 
